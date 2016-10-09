@@ -470,6 +470,14 @@ class BaseYii
         ]);
     }
 
+    // Litao's powered()
+    public static function myPowered(){
+        return \Yii::t('yii','Powered by {name}',[
+            'name' => '<a href="#" rel="external">' . \Yii::t('yii',
+                    'ltvieri') . '</a>'
+        ]);
+    }
+
     /**
      * Translates a message to the specified language.
      *
