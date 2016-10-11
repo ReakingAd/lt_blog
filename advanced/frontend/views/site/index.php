@@ -8,4 +8,6 @@ $this->title = '春爬村上树';
     homepage
 
 </div>
-<script src="src/utilities/pageswitch/pageswitch.js"></script>
+<script src="build/js/lt_libs.min.js"></script>
+<script src="build/js/lt_global.min.js"></script>
+<script src="build/js/lt_home.min.js"></script>
