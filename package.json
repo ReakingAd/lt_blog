@@ -1,6 +1,28 @@
 {
-	"project":"Lost Temple",
-	"name":"lt",
-	"version":"1.0",
-	"author":"ltvieri"
+  "name": "lt_blog",
+  "version": "1.0.0",
+  "description": "my blog",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp": "^3.9.1",
+    "gulp-header": "^1.8.8",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "moment": "^2.15.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://reakingad@github.com/ReakingAd/lt_blog.git"
+  },
+  "author": "ltvieri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReakingAd/lt_blog/issues"
+  },
+  "homepage": "https://github.com/ReakingAd/lt_blog#readme"
 }
