@@ -1,5 +1,6 @@
 {
   "name": "lt_blog",
+  "prefix":"lt",
   "version": "1.0.0",
   "description": "my blog",
   "main": "gulpfile.js",
