@@ -12,7 +12,7 @@ gulp.task('jslibs',function(){
 	return gulp.src('src/js/libs/*.js')
 		.pipe(concat('libs.js'))
 		.pipe(uglify())
-		.pipe(rename(pkg.name + '_libs.min.js'))
+		.pipe(rename(pkg.prefix + '_libs.min.js'))
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/js'));
 });
@@ -20,7 +20,7 @@ gulp.task('jsglobal',function(){
 	return gulp.src('src/js/global/*.js')
 		.pipe(concat('global.js'))
 		.pipe(uglify())
-		.pipe(rename(pkg.name + '_global.min.js'))
+		.pipe(rename(pkg.prefix + '_global.min.js'))
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/js'));
 });
@@ -31,7 +31,7 @@ gulp.task('jshome',function(){
 			// mangle:true,  // 混淆变量名
 			// preserveComments:'all', // all保留注释
 		}))
-		.pipe(rename(pkg.name + '_home.min.js')) // 在流中将文件改名
+		.pipe(rename(pkg.prefix + '_home.min.js')) // 在流中将文件改名
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/js'));
 });
