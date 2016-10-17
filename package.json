@@ -1,6 +1,6 @@
 {
   "name": "lt_blog",
-  "prefix":"lt",
+  "prefix": "lt",
   "version": "1.0.0",
   "description": "my blog",
   "main": "gulpfile.js",
@@ -12,7 +12,10 @@
     "gulp-uglify": "^2.0.0",
     "moment": "^2.15.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
