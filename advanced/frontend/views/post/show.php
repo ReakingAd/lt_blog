@@ -16,7 +16,15 @@ This is a article show.
 	</span>
 <p>
 	<span>内容：</span>
-	<span>
-		<?= Html::encode($data['article']['content']); ?>
+	<span class="content_container">
+		<?= $data['article']['content']; ?>
 	</span>
 </p>
+<script src="build/js/lt_libs.min.js"></script>
+<script src="build/js/lt_global.min.js"></script>
+<script>
+// var $content = $('.content_container').html();
+// $('.content_container').html('');
+// console.log($content);
+// $('.content_container').append($content);
+</script>
