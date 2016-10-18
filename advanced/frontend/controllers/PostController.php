@@ -35,7 +35,7 @@ class PostController extends Controller{
 		$article -> content     = $articleInfo['content'];
 		$article -> status      = $articleInfo['status'];
 		$article -> update_time = date('Y-m-d h:i:s');
-
+		// exit();
 		$article -> save();
 		// 返回状态
 		$res = array();

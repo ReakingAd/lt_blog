@@ -6,12 +6,17 @@ $(document).ready(function(){
 		var _title   = $('.article-title').val();
 		var _content = UE.getEditor('editor').getContent();
 		var _status  = $('.article-status').val();
-
+		var _obj = {
+			title:_title,
+			content:_content,
+			status:_status
+		};
+		console.log(_obj);
 		$.ajax({
 			url:'index.php?r=post/save',
 			type:'post',
 			dataType:'json',
-			data:'title=' + _title + '&content=' + _content + '&status=' +  _status,
+			data:_obj,
 			success:function(data){
 				if(data.result === 'success'){
 					window.location.href = 'index.php?r=post/index';
