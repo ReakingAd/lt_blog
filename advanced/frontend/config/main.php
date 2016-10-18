@@ -53,6 +53,6 @@ return [
         )
     ],
     'params' => $params,
-    
+    'timeZone' => 'Asia/Chongqing'   // 修改时区
 ];
 

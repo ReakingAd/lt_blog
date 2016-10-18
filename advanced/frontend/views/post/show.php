@@ -1,30 +1,30 @@
 <?php
 use yii\helpers\Html;
 ?>
-This is a article show.
-
-<h1>
-	<span>标题：</span>
-	<span>
-		<?= Html::encode($data['article']['title']); ?>
-	</span>
-</h1>
-<h4>
-	<span>状态：</span>
-	<span>
-		<?= Html::encode($data['article']['status']); ?></h4>
-	</span>
-<p>
-	<span>内容：</span>
-	<span class="content_container">
-		<?= $data['article']['content']; ?>
-	</span>
-</p>
+<?php
+var_dump( date('Y-m-d h:i:s') );
+?>
+<div class="article-desc">
+	<h2><?= Html::encode($data['article']['title']); ?></h2>
+	<p>
+		<span>点击量：</span><span class="click">0</span>
+		<span>日期：</span><span class="update-date"><?= Html::encode(date('Y-m-d',strtotime($data['article']['update_time']))); ?></span>
+	</p>
+</div>
+<div class="article-container">
+	<?= $data['article']['content']; ?>
+</div>
 <script src="build/js/lt_libs.min.js"></script>
 <script src="build/js/lt_global.min.js"></script>
-<script>
-// var $content = $('.content_container').html();
-// $('.content_container').html('');
-// console.log($content);
-// $('.content_container').append($content);
-</script>
+<script src="build/js/lt_show.min.js"></script>
+<style>
+.click{
+	margin-right: 20px;
+}
+.article-desc{
+	border-bottom: 1px solid #ccc;
+}
+.article-container{
+	padding-top:20px;
+}
+</style>
