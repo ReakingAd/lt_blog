@@ -30,10 +30,12 @@ class PostController extends Controller{
 			'articleInfo' => $articleInfo
 		);
 		// 存入数据库
-		$article            = new Article;
-		$article -> title   = $articleInfo['title'];
-		$article -> content = $articleInfo['content'];
-		$article -> status  = $articleInfo['status'];
+		$article                = new Article;
+		$article -> title       = $articleInfo['title'];
+		$article -> content     = $articleInfo['content'];
+		$article -> status      = $articleInfo['status'];
+		$article -> update_time = date('Y-m-d h:i:s');
+
 		$article -> save();
 		// 返回状态
 		$res = array();
