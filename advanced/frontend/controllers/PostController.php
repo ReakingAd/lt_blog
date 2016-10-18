@@ -20,6 +20,9 @@ class PostController extends Controller{
 
 	public function actionCreate(){
 		$data = array();
+		$request = Yii::$app -> request;
+		$articleInfo = $request -> get();
+		$data['articleInfo'] = $articleInfo;
 		return $this -> render('create',['data' => $data]);
 	}
 
@@ -35,7 +38,7 @@ class PostController extends Controller{
 		$article -> content     = $articleInfo['content'];
 		$article -> status      = $articleInfo['status'];
 		$article -> update_time = date('Y-m-d h:i:s');
-		// exit();
+
 		$article -> save();
 		// 返回状态
 		$res = array();
@@ -46,7 +49,7 @@ class PostController extends Controller{
 		}
 		else{
 			$res['result'] = 'error';
-			echo $res;
+			echo json_encode($res);
 		}
 	}
 
@@ -56,6 +59,7 @@ class PostController extends Controller{
 		// 根据文章id查询文章内容
 		$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
 		$data = array(
+			'id' => $id,
 			'article' => $article
 		);
 		return $this -> render('show',['data' => $data]);

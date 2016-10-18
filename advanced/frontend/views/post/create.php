@@ -1,7 +1,9 @@
 <?php
 use yii\helpers\Html;
 ?>
-
+<?php
+var_dump($data);
+?>
 <form class="article-form" action="" method="post">
 	<div class="form-group">
 		<label for="title">标题:</label>
