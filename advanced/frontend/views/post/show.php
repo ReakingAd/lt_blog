@@ -1,9 +1,6 @@
 <?php
 use yii\helpers\Html;
 ?>
-<?php
-var_dump( date('Y-m-d h:i:s') );
-?>
 <div class="article-desc">
 	<h2><?= Html::encode($data['article']['title']); ?></h2>
 	<p>
