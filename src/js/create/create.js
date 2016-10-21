@@ -76,15 +76,17 @@
 				id:_id
 			};
 
-			$.ajax({
-				url:'index.php?r=post/get-article',
-				type:'post',
-				dataType:'json',
-				data:_data,
-				success:function(data){
-					ue.setContent(data.content);
-				}
-			})
+			if( _id ){
+				$.ajax({
+					url:'index.php?r=post/get-article',
+					type:'post',
+					dataType:'json',
+					data:_data,
+					success:function(data){
+						ue.setContent(data.content);
+					}
+				})
+			}
 		}
 	}
 }).call(this);
