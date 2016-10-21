@@ -19,17 +19,25 @@ class PostController extends Controller{
 	}
 
 	public function actionCreate(){
-		$data = array();
+		$data = array(
+			'article' => ''
+		);
+		// 如果get收到参数id，则进入编辑功能。
 		$request = Yii::$app -> request;
-		$articleInfo = $request -> get();
-		$data['articleInfo'] = $articleInfo;
+		$id = $request -> get('id');
+		if(isset($id)){
+			// 根据文章id查询文章内容
+			$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
+			$data['article'] = $article;
+		}
 		return $this -> render('create',['data' => $data]);
 	}
 
+	// 创建文章接口
 	public function actionSave(){
-		$request = Yii::$app -> request;
+		$request     = Yii::$app -> request;
 		$articleInfo = $request -> post();
-		$data = array(
+		$data 		 = array(
 			'articleInfo' => $articleInfo
 		);
 		// 存入数据库
@@ -39,18 +47,42 @@ class PostController extends Controller{
 		$article -> status      = $articleInfo['status'];
 		$article -> update_time = date('Y-m-d h:i:s');
 
-		$article -> save();
+		$result = $article -> save();
 		// 返回状态
 		$res = array();
-		$id = $article -> primaryKey;
-		if( isset($id) ){
+		if( $result ){
 			$res['result'] = 'success';
-			echo json_encode($res);
 		}
 		else{
 			$res['result'] = 'error';
-			echo json_encode($res);
 		}
+		echo json_encode($res);
+	}
+	
+	// 修改文章接口
+	public function actionUpdate(){
+		$request     = Yii::$app -> request;
+		$articleInfo = $request -> post();
+		$id          = $articleInfo['id'];
+		$data        = array(
+			'articleInfo' => $articleInfo
+		);
+		$article = Article::find() -> where('id=:id',[':id' => $id]) -> one();
+		$article -> title       = $articleInfo['title'];
+		$article -> content     = $articleInfo['content'];
+		$article -> status      = $articleInfo['status'];
+		$article -> update_time = date('Y-m-d h:i:s');
+
+		$result = $article -> save();
+		// 返回状态
+		$res = array();
+		if( $result ){
+			$res['result'] = 'success';
+		}
+		else {
+			$res['result'] = 'error';
+		}
+		echo json_encode($res);
 	}
 
 	public function actionShow(){

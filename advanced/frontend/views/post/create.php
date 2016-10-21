@@ -1,13 +1,10 @@
 <?php
 use yii\helpers\Html;
 ?>
-<?php
-var_dump($data);
-?>
 <form class="article-form" action="" method="post">
 	<div class="form-group">
 		<label for="title">标题:</label>
-		<input class="article-title form-control" id="title" name='title' type="text" value="" />
+		<input class="article-title form-control" id="title" name='title' type="text" value="<?= Html::encode(isset($data['article']['title']) ? $data['article']['title'] : '' ); ?>" />
 	</div>
 	<div class="form-group">
 		<label for="content">内容:</label>
@@ -33,4 +30,10 @@ var_dump($data);
 <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="build/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script>
+var create = {};
+create.article = {};
+create.article.id = '<?= Html::encode( isset($data['article']['id']) ? $data['article']['id'] : '' ); ?>'
+create.article.content = '<?= Html::encode( isset($data['article']['content'])) ? $data['article']['content'] : ''; ?>';
+</script>
 <script src="build/js/lt_create.min.js"></script>
