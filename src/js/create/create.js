@@ -52,7 +52,6 @@
 				else {
 					_ajaxUrl = 'index.php?r=post/save';
 				}
-
 				$.ajax({
 					url:_ajaxUrl,
 					type:'post',
