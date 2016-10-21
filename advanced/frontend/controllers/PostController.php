@@ -104,4 +104,26 @@ class PostController extends Controller{
 		$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
 		echo json_encode($article);
 	}
+
+	// interface : count PV of current page
+	public function actionCountPv(){
+		$request = Yii::$app -> request;
+		$id = $request -> post('id');
+
+		$article = Article::find() -> where('id=:id',[':id' => $id]) -> one();
+		$oldPv = $article -> pv;
+		$pv = $oldPv + 1;
+		$article -> pv = $pv;
+		$result = $article -> save();
+
+		$response = array();
+		if( $result ){
+			$response['result'] = 'success';
+			$response['value']['pv'] = $pv; 
+		}
+		else{
+			$response['result'] = 'error';
+		}
+		echo json_encode($response);
+	}
 }

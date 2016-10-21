@@ -1,17 +1,55 @@
+;(function(){
+
+	'use strict';
+
+	var root = this;
+	var $ = root.jQuery;
+
+	if( typeof root.blog === 'undefined' ){
+		root.blog = {};
+	}
+
+	root.blog.show = {
+		init:function(){
+			this.goEditArticle();
+			this.countPv();
+		},
+		// binding edit article
+		goEditArticle:function(){
+			$('.btn-edit').on('click',function(){
+				var _id = lt_values['show']['articleId'];
+				
+				window.location.href = 'index.php?r=post/create&id=' + _id;
+			});
+		},
+		// ajax to count PV
+		countPv:function(){
+			var _data = {
+				id:lt_values['show']['articleId']
+			};
+
+			$.ajax({
+				url:'index.php?r=post/count-pv',
+				type:'post',
+				dataType:'json',
+				data:_data,
+				success:function(data){
+					console.log(data);
+					if(data.result = 'success'){
+						console.log('count')
+					}
+				}
+			})
+		}
+	}
+}).call(this);
 
 $(document).ready(function(){
-	var $container = $('.click');
-	var count = 0;
+	
+	'use strict';
 
-	setInterval(function(){
-		count++;
-		$container.text(count);
-	},10);
+	var root = window;
+	var $ = root.jQuery;
 
-	// 编辑文章
-	$('.btn-edit').on('click',function(){
-		var _id = window.lt_show.id;
-		
-		window.location.href = 'index.php?r=post/create&id=' + _id;
-	});
+	root.blog.show.init();
 });
