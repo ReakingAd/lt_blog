@@ -42,4 +42,10 @@ if( typeof lt_values['show'] === 'undefined' ){
 .article-container{
 	padding-top:20px;
 }
+table td{
+	border:1px solid #000;
+}
+.capture-pic{
+	border:1px solid #000;
+}
 </style>
