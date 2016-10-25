@@ -210,4 +210,9 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    // for test
+    public function actionTest(){
+        return $this -> render('test');
+    }
 }
