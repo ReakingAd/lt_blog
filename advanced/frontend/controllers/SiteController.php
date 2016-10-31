@@ -39,7 +39,12 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
+                // 定制报错信息
+                // 'denyCallback' => function($rule,$action){
+                //     throw new \Exception('You are not allowed to access this page.');
+                // }
             ],
+            // 指定用于匹配那种请求方法
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -213,6 +218,29 @@ class SiteController extends Controller
 
     // for test
     public function actionTest(){
+        // return $this -> render('test');
+        
+        // echo '123';
         return $this -> render('test');
+    }
+
+    // for test
+    public function actionTest2(){
+        $request = Yii::$app -> request;
+        $username = $request -> post('username');
+        $password = $request -> post('password');
+        if($password === '111'){
+            // echo 'true';
+            $session = Yii::$app -> session;
+            if($session -> isActive){
+                echo json_encode('session is active.');
+            }
+            else{
+                echo json_encode('session isn\'t active.');
+            }
+        }
+        else{
+            echo 'false';
+        }
     }
 }

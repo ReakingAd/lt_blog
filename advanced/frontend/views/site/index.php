@@ -5,16 +5,9 @@
 $this->title = '春爬村上树';
 ?>
 <div class="home-container">
-	<ul>
-		<li><a href="#">Linux 命令行</a></li>
-		<li><a href="#">Gulp</a></li>
-		<li><a href="#">Javascript中的函数</a></li>
-		<li><a href="#">sublime插件</a></li>
-		<li><a href="#">javascript中的糟粕</a></li>
-	</ul>
+site/index
 
 </div>
-<input type="text" readonly value="123" />
 <style>
 	.main-container{
 		border:1px solid red;
