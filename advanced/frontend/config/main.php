@@ -50,7 +50,10 @@ return [
                 'username' => 'root',
                 'password' => 'root',
                 'charset' => 'utf8',
-        )
+        ),
+        'authManage' => [
+            'class' => 'yii\rbac\Phpmanager',
+        ]
     ],
     'params' => $params,
     'timeZone' => 'Asia/Chongqing'   // 修改时区

@@ -51,3 +51,11 @@ gulp.task('jsshow',function(){
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/js'));
 });
+gulp.task('jstest',function(){
+	return gulp.src(['src/js/test/*.js'])
+		.pipe(concat('test.js'))
+		.pipe(uglify())
+		.pipe(rename(pkg.prefix + '_test.min.js')) // 在流中将文件改名
+		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
+		.pipe(gulp.dest('advanced/frontend/web/build/js'));
+});

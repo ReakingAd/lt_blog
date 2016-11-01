@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Test;
 
 /**
  * Site controller
@@ -29,12 +30,12 @@ class SiteController extends Controller
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => [''],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','signup'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -218,9 +219,6 @@ class SiteController extends Controller
 
     // for test
     public function actionTest(){
-        // return $this -> render('test');
-        
-        // echo '123';
         return $this -> render('test');
     }
 
@@ -229,18 +227,15 @@ class SiteController extends Controller
         $request = Yii::$app -> request;
         $username = $request -> post('username');
         $password = $request -> post('password');
-        if($password === '111'){
-            // echo 'true';
-            $session = Yii::$app -> session;
-            if($session -> isActive){
-                echo json_encode('session is active.');
-            }
-            else{
-                echo json_encode('session isn\'t active.');
-            }
-        }
-        else{
-            echo 'false';
-        }
+        
+        $test = new Test;
+        $test -> username = $username;
+        $test -> password = md5($password);
+        $result = $test -> save();
+
+        $response = array(
+            'result' => $result
+        );
+        echo json_encode($response);
     }
 }
