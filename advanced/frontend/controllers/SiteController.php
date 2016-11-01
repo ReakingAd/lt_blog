@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Test;
 
 /**
  * Site controller
@@ -29,17 +30,22 @@ class SiteController extends Controller
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => [''],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','signup'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
+                // 定制报错信息
+                // 'denyCallback' => function($rule,$action){
+                //     throw new \Exception('You are not allowed to access this page.');
+                // }
             ],
+            // 指定用于匹配那种请求方法
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -209,5 +215,27 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    // for test
+    public function actionTest(){
+        return $this -> render('test');
+    }
+
+    // for test
+    public function actionTest2(){
+        $request = Yii::$app -> request;
+        $username = $request -> post('username');
+        $password = $request -> post('password');
+        
+        $test = new Test;
+        $test -> username = $username;
+        $test -> password = md5($password);
+        $result = $test -> save();
+
+        $response = array(
+            'result' => $result
+        );
+        echo json_encode($response);
     }
 }
