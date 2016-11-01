@@ -5,17 +5,45 @@ use Yii;
 use yii\web\Controller;
 use frontend\models\User;
 use frontend\models\Article;
+use yii\filters\AccessControl;
 
 class PostController extends Controller{
 
 	public $enableCsrfValidation = false; // forbidden the _csrf check intercept
+
+	public function behaviors(){
+		return [
+			'access' => [
+				'class' => AccessControl::className(),
+				'only' => ['create','save','update','delete','show'],
+				'rules' =>[
+					[
+						'allow' => true,
+						'actions' => ['show'],
+						'roles' =>['?']
+					],
+					[
+						'allow' => true,
+						'actions' => [], // 为空，则说明only中的所有操作都适用
+						'roles' => ['@'],
+						// 'matchCallback' => function($rule,$action){
+						// 	return date('d-m') === '01-11'; // 仅11月1日可以访问
+						// }
+					]	
+				],
+				'denyCallback' => function($rule,$action){
+					echo Yii::$app -> view -> render('@app/views/post/error.php');
+				}
+			]
+		];
+	}
 
 	public function actionIndex(){
 		$list = Article::find() ->asArray() -> all();
 		$data = array(
 			'list' => $list
 		);
-		return $this -> render('list',['data' => $data]);
+		return $this -> render('index',['data' => $data]);
 	}
 
 	public function actionCreate(){
@@ -86,11 +114,15 @@ class PostController extends Controller{
 	}
 
 	public function actionShow(){
+		$isGuest = Yii::$app -> user -> isGuest;
+		// var_dump($isGuest);
+		// die();
 		$request = Yii::$app -> request;
 		$id = $request -> get('id');
 		// get the article by id
 		$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
 		$data = array(
+			'isGuest' => $isGuest,
 			'id' => $id,
 			'article' => $article
 		);
