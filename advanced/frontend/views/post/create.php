@@ -16,8 +16,7 @@ use yii\helpers\Html;
 		<label for="status">状态:</label>
 		<select class="article-status" name="status" id="status">
 			<option value="1">发布</option>
-			<option value="2">草稿</option>
-			<option value="3">已存档</option>
+			<option value="2" selected="selected">草稿</option>
 		</select>
 	</div>
 	<input class="btn-submit btn btn-info" type="button" value="提交" />

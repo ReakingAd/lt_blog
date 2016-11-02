@@ -39,7 +39,13 @@ class PostController extends Controller{
 	}
 
 	public function actionList(){
-		$list = Article::find() ->asArray() -> all();
+		$isGuest = Yii::$app -> user -> isGuest;
+		if( $isGuest ){
+			$list = Article::find() -> where('status=1') -> asArray() -> all();
+		}
+		else{
+			$list = Article::find() -> asArray() -> all();
+		}
 		$data = array(
 			'list' => $list
 		);
@@ -138,9 +144,9 @@ class PostController extends Controller{
 	// interface : count PV of current page
 	public function actionCountPv(){
 		$request = Yii::$app -> request;
-		$id = $request -> post('id');
+		$title = $request -> post('title');
 
-		$article = Article::find() -> where('id=:id',[':id' => $id]) -> one();
+		$article = Article::find() -> where('title=:title',[':title' => $title]) -> one();
 		$oldPv = $article -> pv;
 		$pv = $oldPv + 1;
 		$article -> pv = $pv;
