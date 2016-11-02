@@ -17,10 +17,9 @@
 		// binding edit article
 		goEditArticle:function(){
 			$('.btn-edit').on('click',function(){
-				var _id = lt_values['show']['articleId'];
-				var _url = root.blog.global.message.url_prefix + 'create?id=' + _id;
-				// console.log(_url);
-				// return;
+				var _title = lt_values['show']['articleTitle'];
+				var _url = root.blog.global.message.url_prefix + 'create?title=' + _title;
+
 				window.location.href = _url;
 			});
 		},
@@ -37,7 +36,7 @@
 				data:_data,
 				success:function(data){
 					if(data.result = 'success'){
-						console.log('============== count =============')
+						console.log('============== count =============');
 					}
 				}
 			})
