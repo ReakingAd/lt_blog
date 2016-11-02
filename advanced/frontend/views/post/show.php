@@ -11,6 +11,7 @@ use yii\helpers\Html;
 		<?php } ?>
 	</p>
 </div>
+<wb:share-button addition="full" type="button" ralateUid="1899226034"></wb:share-button>
 <div class="article-container">
 	<?= $data['article']['content']; ?>
 </div>
