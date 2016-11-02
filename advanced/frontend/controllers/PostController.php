@@ -115,8 +115,6 @@ class PostController extends Controller{
 
 	public function actionShow(){
 		$isGuest = Yii::$app -> user -> isGuest;
-		// var_dump($isGuest);
-		// die();
 		$request = Yii::$app -> request;
 		$id = $request -> get('id');
 		// get the article by id
