@@ -29,14 +29,14 @@
 			};
 
 			$.ajax({
-				url:'index.php?r=post/count-pv',
+				// url:'index.php?r=post/count-pv',
+				url:'../post/count-pv',
 				type:'post',
 				dataType:'json',
 				data:_data,
 				success:function(data){
-					console.log(data);
 					if(data.result = 'success'){
-						console.log('count')
+						console.log('============== count =============')
 					}
 				}
 			})
