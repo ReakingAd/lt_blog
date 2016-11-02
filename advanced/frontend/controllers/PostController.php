@@ -52,10 +52,10 @@ class PostController extends Controller{
 		);
 		// if the id is exist , go to edit the article
 		$request = Yii::$app -> request;
-		$id = $request -> get('id');
-		if(isset($id)){
-			// get the article by ID
-			$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
+		$title = $request -> get('title');
+		if(isset($title)){
+			// get the article by title
+			$article = Article::find() -> where('title=:title',[':title' => $title]) -> asArray() -> one();
 			$data['article'] = $article;
 		}
 		return $this -> render('create',['data' => $data]);
@@ -116,12 +116,12 @@ class PostController extends Controller{
 	public function actionShow(){
 		$isGuest = Yii::$app -> user -> isGuest;
 		$request = Yii::$app -> request;
-		$id = $request -> get('id');
-		// get the article by id
-		$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
+		$title = $request -> get('title');
+		// get the article by title
+		$article = Article::find() -> where('title=:title',[':title' => $title]) -> asArray() -> one();
 		$data = array(
 			'isGuest' => $isGuest,
-			'id' => $id,
+			'title' => $title,
 			'article' => $article
 		);
 		return $this -> render('show',['data' => $data]);

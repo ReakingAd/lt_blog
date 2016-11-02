@@ -46,11 +46,11 @@
 				var _ajaxUrl = '';
 				// 更新文章
 				if( _id ){
-					_ajaxUrl = '../post/update';
+					_ajaxUrl = 'post/update';
 				}
 				// 新建文章
 				else {
-					_ajaxUrl = '../post/save';
+					_ajaxUrl = 'post/save';
 				}
 				$.ajax({
 					url:_ajaxUrl,
@@ -59,7 +59,7 @@
 					data:_obj,
 					success:function(data){
 						if(data.result === 'success'){
-							window.location.href = 'index.php?r=post/index';
+							window.location.href = 'list';
 						}
 						else{
 							alert(data.result);

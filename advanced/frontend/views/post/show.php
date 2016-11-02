@@ -26,7 +26,8 @@ if( typeof lt_values === 'undefined' ){
 
 if( typeof lt_values['show'] === 'undefined' ){
 	lt_values['show'] = {
-		articleId: '<?= Html::encode($data['article']['id']); ?>'   // 文章id
+		articleId: '<?= Html::encode($data['article']['id']); ?>',   // 文章id
+		articleTitle: '<?= Html::encode($data['article']['title']); ?>'   // 文章title
 	}
 }
 </script>
