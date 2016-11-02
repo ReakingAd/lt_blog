@@ -46,12 +46,10 @@
 				var _ajaxUrl = '';
 				// 更新文章
 				if( _id ){
-					// _ajaxUrl = 'index.php?r=post/update';
 					_ajaxUrl = '../post/update';
 				}
 				// 新建文章
 				else {
-					// _ajaxUrl = 'index.php?r=post/save';
 					_ajaxUrl = '../post/save';
 				}
 				$.ajax({

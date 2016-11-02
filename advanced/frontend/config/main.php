@@ -40,7 +40,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,  // 隐藏url中的入口文件index.php
             'rules' => [
-                'list' => 'post/index',
+                'list' => 'post/list',
                 'show/<id:\d+>' => 'post/show',
                 'create' => 'post/create'
             ],
@@ -59,7 +59,7 @@ return [
     ],
     'params' => $params,
     'timeZone' => 'Asia/Chongqing',   // 修改时区
-    'defaultRoute' => 'post/index',     // 缺省路由
+    'defaultRoute' => 'post/list',     // 缺省路由
     // 'catchAll' => ['site/offline'],       // 全拦截路由
 ];
 

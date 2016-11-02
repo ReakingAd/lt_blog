@@ -38,12 +38,12 @@ class PostController extends Controller{
 		];
 	}
 
-	public function actionIndex(){
+	public function actionList(){
 		$list = Article::find() ->asArray() -> all();
 		$data = array(
 			'list' => $list
 		);
-		return $this -> render('index',['data' => $data]);
+		return $this -> render('list',['data' => $data]);
 	}
 
 	public function actionCreate(){
