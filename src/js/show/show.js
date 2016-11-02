@@ -18,8 +18,10 @@
 		goEditArticle:function(){
 			$('.btn-edit').on('click',function(){
 				var _id = lt_values['show']['articleId'];
-				
-				window.location.href = 'index.php?r=post/create&id=' + _id;
+				var _url = root.blog.global.message.url_prefix + 'create?id=' + _id;
+				// console.log(_url);
+				// return;
+				window.location.href = _url;
 			});
 		},
 		// ajax to count PV
@@ -29,7 +31,6 @@
 			};
 
 			$.ajax({
-				// url:'index.php?r=post/count-pv',
 				url:'../post/count-pv',
 				type:'post',
 				dataType:'json',
