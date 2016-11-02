@@ -10,6 +10,9 @@ use yii\helpers\Html;
 			<?php foreach($data['list'] as $article) {?>
 				<li>
 					<a class="pull-left" href="../show/<?php echo $article["title"]; ?>"><?php echo $article['title']; ?></a>
+					<?php if($article['status'] === '2' ) { ?>
+						<i class="draft-label pull-left">[草稿]</i>
+					<?php } ?>
 					<span class="update-time pull-right"><?= Html::encode(date('Y-m-d',strtotime($article['update_time']))); ?></span>
 				</li>
 			<?php } ?>
@@ -20,6 +23,10 @@ use yii\helpers\Html;
 }
 li{
 	border:1px solid transparent;
+}
+.draft-label{
+	color:#f00;
+	margin-left:10px;
 }
 </style>
 	</div>

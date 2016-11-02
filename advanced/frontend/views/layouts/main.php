@@ -18,6 +18,7 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="wb:webmaster" content="763685fa26fc02c5" />
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -70,9 +71,8 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; 春爬村上树 <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::myPowered() ?></p>
+        <p class="pull-left">京ICP备 16033395号-1</p>
+        <p class="pull-right"><?= Yii::myPowered() ?> &copy; <?= date('Y'); ?></p>
     </div>
 </footer>
 

@@ -18,7 +18,7 @@
 		goEditArticle:function(){
 			$('.btn-edit').on('click',function(){
 				var _title = lt_values['show']['articleTitle'];
-				var _url = root.blog.global.message.url_prefix + 'create?title=' + _title;
+				var _url = '../create?title=' + _title;
 
 				window.location.href = _url;
 			});
@@ -26,7 +26,7 @@
 		// ajax to count PV
 		countPv:function(){
 			var _data = {
-				id:lt_values['show']['articleId']
+				title:lt_values['show']['articleTitle']
 			};
 
 			$.ajax({
@@ -39,7 +39,7 @@
 						console.log('============== count =============');
 					}
 				}
-			})
+			});
 		}
 	}
 }).call(this);
