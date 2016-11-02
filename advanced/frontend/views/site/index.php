@@ -18,8 +18,3 @@ site/index
 
 <script src="build/js/lt_libs.min.js"></script>
 <script src="build/js/lt_global.min.js"></script>
-<script src="build/js/lt_home.min.js"></script>
-<script>
-	var value = $('input').val();
-	console.log(value)
-</script>

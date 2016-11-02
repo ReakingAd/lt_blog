@@ -27,14 +27,6 @@ gulp.task('jsglobal',function(){
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/js'));
 });
-gulp.task('jshome',function(){
-	return gulp.src(['src/js/home/*.js'])
-		.pipe(concat('home.js'))
-		.pipe(uglify())
-		.pipe(rename(pkg.prefix + '_home.min.js')) // 在流中将文件改名
-		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
-		.pipe(gulp.dest('advanced/frontend/web/build/js'));
-});
 gulp.task('jscreate',function(){
 	return gulp.src(['src/js/create/*.js'])
 		.pipe(concat('create.js'))

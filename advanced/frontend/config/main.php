@@ -36,14 +36,16 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName' => false,  // 隐藏url中的入口文件index.php
             'rules' => [
+                'list' => 'post/list',
+                'show/<title:>' => 'post/show',
+                'create' => 'post/create'
             ],
+            // 'suffix' => '.html',    // url后缀.需要很多js调用的接口也要添加后缀。所以不推荐加上
         ],
-        */
         'db' => array(  
                 'class' => 'yii\db\Connection',
                 'dsn' => 'mysql:host=localhost;dbname=yii2advanced',
@@ -56,6 +58,8 @@ return [
         ]
     ],
     'params' => $params,
-    'timeZone' => 'Asia/Chongqing'   // 修改时区
+    'timeZone' => 'Asia/Chongqing',   // 修改时区
+    'defaultRoute' => 'post/list',     // 缺省路由
+    // 'catchAll' => ['site/offline'],       // 全拦截路由
 ];
 

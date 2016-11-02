@@ -16,9 +16,9 @@ use yii\helpers\Html;
 </div>
 
 <br />
-<script src="build/js/lt_libs.min.js"></script>
-<script src="build/js/lt_global.min.js"></script>
-<script src="build/js/lt_show.min.js"></script>
+<script src="../build/js/lt_libs.min.js"></script>
+<script src="../build/js/lt_global.min.js"></script>
+<script src="../build/js/lt_show.min.js"></script>
 <script>
 if( typeof lt_values === 'undefined' ){
 	lt_values = {};
@@ -26,7 +26,8 @@ if( typeof lt_values === 'undefined' ){
 
 if( typeof lt_values['show'] === 'undefined' ){
 	lt_values['show'] = {
-		articleId: '<?= Html::encode($data['article']['id']); ?>'   // 文章id
+		articleId: '<?= Html::encode($data['article']['id']); ?>',   // 文章id
+		articleTitle: '<?= Html::encode($data['article']['title']); ?>'   // 文章title
 	}
 }
 </script>

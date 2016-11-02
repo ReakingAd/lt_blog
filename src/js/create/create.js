@@ -46,11 +46,11 @@
 				var _ajaxUrl = '';
 				// 更新文章
 				if( _id ){
-					_ajaxUrl = 'index.php?r=post/update';
+					_ajaxUrl = 'post/update';
 				}
 				// 新建文章
 				else {
-					_ajaxUrl = 'index.php?r=post/save';
+					_ajaxUrl = 'post/save';
 				}
 				$.ajax({
 					url:_ajaxUrl,
@@ -59,7 +59,7 @@
 					data:_obj,
 					success:function(data){
 						if(data.result === 'success'){
-							window.location.href = 'index.php?r=post/index';
+							window.location.href = 'list';
 						}
 						else{
 							alert(data.result);
@@ -76,8 +76,10 @@
 			};
 
 			if( _id ){
+				var _url =  root.blog.global.message.url_prefix + 'post/get-article?id=' + _id;
+
 				$.ajax({
-					url:'index.php?r=post/get-article',
+					url:_url,
 					type:'post',
 					dataType:'json',
 					data:_data,

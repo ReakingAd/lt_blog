@@ -217,6 +217,10 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionOffline(){
+        return $this -> renderPartial('offline');
+    }
+
     // for test
     public function actionTest(){
         return $this -> render('test');
