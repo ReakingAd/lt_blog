@@ -11,12 +11,12 @@ use yii\helpers\Html;
 		<?php } ?>
 	</p>
 </div>
-<wb:share-button addition="full" type="button" ralateUid="1899226034"></wb:share-button>
 <div class="article-container">
 	<?= $data['article']['content']; ?>
 </div>
 
 <br />
+<wb:share-button addition="full" type="button" ralateUid="1899226034"></wb:share-button>
 <script src="../build/js/lt_libs.min.js"></script>
 <script src="../build/js/lt_global.min.js"></script>
 <script src="../build/js/lt_show.min.js"></script>
