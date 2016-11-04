@@ -15,8 +15,8 @@ use yii\helpers\Html;
 	<div class="form-group">
 		<label for="status">状态:</label>
 		<select class="article-status" name="status" id="status">
-			<option value="1">发布</option>
-			<option value="2" selected="selected">草稿</option>
+			<option value="1" <?php if($data['article']['status'] === '1'){ echo "selected"; } ?> >发布</option>
+			<option value="2" <?php if($data['article']['status'] === '2'){ echo "selected"; } ?> >草稿</option>
 		</select>
 	</div>
 	<input class="btn-submit btn btn-info" type="button" value="提交" />
