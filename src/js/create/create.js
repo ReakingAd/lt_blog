@@ -14,7 +14,8 @@
 
 		},
 		init:function(){
-			this.initUeditor();
+			alert(111);
+			// this.initUeditor();
 			this.submitArticle();
 		},
 		// initialize Ueditor
