@@ -5,6 +5,7 @@
 function Tags(container,content){
 	this.container = container;
 	this.content   = content;
+	this.canRemove = true;
 
 	this.btn_close = 'lt-tag-close';
 }
@@ -30,13 +31,19 @@ Tags.prototype.bindingRemove = function(){
 	});
 }
 
-jQuery.prototype.tags = function(content){
-	if( !content || typeof content !== 'string' ){
+jQuery.prototype.tags = function(options){
+	var default_options = {
+		content:'123',
+		canRemove:'true'
+	};
+	var _options = $.extend({},default_options,options);
+	console.log(_options)
+	if( !_options.content || typeof _options.content !== 'string' ){
 		console.warn('::string is needed');
 		return ;
 	}
-	var _content = content ? content : '123';
-	var _Tags = new Tags($(this),_content);
+	// var _content = content ? content : '123';
+	var _Tags = new Tags($(this),_options.content);
 	
 	_Tags.init();
 }

@@ -110,7 +110,9 @@
 				var $keyword    = $('#keyword');
 				var _tagContent = $('#keyword').val();
 
-				$('.keyword-container').tags(_tagContent);
+				$('.keyword-container').tags({
+					content:_tagContent
+				});
 				$keyword.val('');
 			});
 		}

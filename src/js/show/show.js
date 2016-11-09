@@ -13,6 +13,7 @@
 		init:function(){
 			this.goEditArticle();
 			this.countPv();
+			this.showKeyword();
 		},
 		// binding edit article
 		goEditArticle:function(){
@@ -40,6 +41,18 @@
 					}
 				}
 			});
+		},
+		showKeyword:function(){
+			var _keyword    = lt_values.show.articleKeyword;
+			var _keywordArr = _keyword.split(',');
+			var $container  = $('.keyword-container');
+
+			for( var i=0;i<_keywordArr.length;i++){
+				console.log(_keywordArr[i]);
+				$container.tags({
+					content:_keywordArr[i]
+				});
+			}
 		}
 	}
 }).call(this);
