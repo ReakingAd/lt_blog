@@ -14,9 +14,9 @@
 
 		},
 		init:function(){
-			alert(111);
-			// this.initUeditor();
+			this.initUeditor();
 			this.submitArticle();
+			this.addTag();
 		},
 		// initialize Ueditor
 		initUeditor:function(){
@@ -32,18 +32,23 @@
 		},
 		// submit the article
 		submitArticle:function(){
+			var _this = this;
+
 			$('.btn-submit').on('click',function(){
+				// console.log('in')
+				// return;
 				var _title   = $('.article-title').val();
 				var _content = UE.getEditor('editor').getContent();
 				var _id      = $('.ariticle-id').val();
 				var _status  = $('.article-status').val();
+				var _keyword = _this.getKeyword();
 				var _obj     = {
 					id:_id,
 					title:_title,
 					content:_content,
-					status:_status
+					status:_status,
+					keyword:_keyword
 				};
-
 				var _ajaxUrl = '';
 				// 更新文章
 				if( _id ){
@@ -69,6 +74,15 @@
 				})
 			});
 		},
+		getKeyword:function(){
+			var $tags = $('.lt-tag');
+			var tagsArr  = [];
+
+			$.each($tags,function(index,target){
+				tagsArr.push( $(target).text() );
+			});
+			return tagsArr.join(',');
+		},
 		// get the article to be editted
 		getArticle:function(ue){
 			var _id = $('.ariticle-id').val();
@@ -89,6 +103,16 @@
 					}
 				})
 			}
+		},
+		// add a tag
+		addTag:function(){
+			$('.btn-addtag').on('click',function(){
+				var $keyword    = $('#keyword');
+				var _tagContent = $('#keyword').val();
+
+				$('.keyword-container').tags(_tagContent);
+				$keyword.val('');
+			});
 		}
 	}
 }).call(this);

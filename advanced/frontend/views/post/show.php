@@ -1,6 +1,9 @@
 <?php
 use yii\helpers\Html;
 ?>
+<?php
+	var_dump($data['article']);
+?>
 <div class="article-desc">
 	<h2><?= Html::encode($data['article']['title']); ?></h2>
 	<p class="clearfix">
