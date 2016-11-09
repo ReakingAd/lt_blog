@@ -13,6 +13,14 @@ use yii\helpers\Html;
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="keyword">标签：</label>
+		<input id="keyword" type="text" />
+		<!-- <button class="btn btn-default btn-sm btn-addtag">添加</button> -->
+		<input class="btn btn-default btn-sm btn-addtag" type="button" value="添加" />
+	</div>
+	<div class="form-group keyword-container">
+	</div>
+	<div class="form-group">
 		<label for="status">状态:</label>
 		<select class="article-status" name="status" id="status">
 			<option value="1" <?php if( isset($data['article']['status']) && $data['article']['status'] === '1'){ echo "selected"; } ?> >发布</option>

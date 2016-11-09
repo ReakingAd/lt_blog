@@ -1,13 +1,16 @@
 'use strict';
 
-var gulp   = require('gulp');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var header = require('gulp-header');
-var rename = require('gulp-rename');
-var moment = require('moment');
-var pkg    = require('./package.json');
+var gulp     = require('gulp');
+var concat   = require('gulp-concat');
+var uglify   = require('gulp-uglify');
+var header   = require('gulp-header');
+var rename   = require('gulp-rename');
+var moment   = require('moment');
+var pkg      = require('./package.json');
+var sass     = require('gulp-sass');
+var cleanCSS = require('gulp-clean-css');
 
+// js
 gulp.task('jslibs',function(){
 	return gulp.src('src/js/libs/*.js')
 		.pipe(concat('libs.js'))
@@ -51,3 +54,13 @@ gulp.task('jstest',function(){
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/js'));
 });
+// css
+gulp.task('csslibs',function(){
+	return gulp.src(['src/css/libs/*.scss'])
+		.pipe(concat('libs.css'))
+		.pipe(sass().on('error', sass.logError))
+		.pipe(cleanCSS())
+		.pipe(rename(pkg.prefix + '_libs.min.css')) // 在流中将文件改名
+		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
+		.pipe(gulp.dest('advanced/frontend/web/build/css'))
+})

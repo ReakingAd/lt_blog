@@ -1,0 +1,2 @@
+/* Build by ltvieri 2016/11/09 20:48:17 */
+.tag-container{display:inline-block;border:1px solid #ccc;padding:6px 28px 6px 8px;font-size:12px;position:relative;border-radius:3px;background:#eee;margin:2px}.tag-container .lt-tag-close{position:absolute;right:2px;top:2px;font-weight:700;font-size:21px;cursor:pointer;color:#000;line-height:1;opacity:.2;border:1px solid transparent;-webkit-user-select:none}.tag-container .lt-tag-close:hover{opacity:.5}.tag-container .lt-tag-close:active{border:1px solid #ccc;background-color:#ccc}.tag-no-remove{padding-right:8px}
