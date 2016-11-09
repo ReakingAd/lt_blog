@@ -59,6 +59,7 @@ gulp.task('csslibs',function(){
 		.pipe(concat('libs.css'))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(cleanCSS())
+		.pipe(rename(pkg.prefix + '_libs.min.css')) // 在流中将文件改名
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/css'))
 })

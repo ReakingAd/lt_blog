@@ -79,6 +79,7 @@ class PostController extends Controller{
 		$article -> title       = $articleInfo['title'];
 		$article -> content     = $articleInfo['content'];
 		$article -> status      = $articleInfo['status'];
+		$article -> keyword     = $articleInfo['keyword'];
 		$article -> update_time = date('Y-m-d h:i:s');
 
 		$result = $article -> save();
@@ -105,6 +106,7 @@ class PostController extends Controller{
 		$article -> title       = $articleInfo['title'];
 		$article -> content     = $articleInfo['content'];
 		$article -> status      = $articleInfo['status'];
+		$article -> keyword      = $articleInfo['keyword'];
 		$article -> update_time = date('Y-m-d h:i:s');
 
 		$result = $article -> save();
