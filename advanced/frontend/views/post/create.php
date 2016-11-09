@@ -13,10 +13,33 @@ use yii\helpers\Html;
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="keyword">标签：</label>
+		<input id="keyword" type="text" />
+		<button class="btn btn-default btn-sm">添加</button>
+	</div>
+	<div class="form-group keyword-container">
+		<div class="tag-container">
+			<span class="lt-tag">AJAX</span>
+			<span class="lt-tag-close" aria-hidden="true">×</span>
+		</div>
+		<div class="tag-container">
+			<span class="lt-tag">javascript</span>
+			<span class="lt-tag-close" aria-hidden="true">×</span>
+		</div>
+		<div class="tag-container">
+			<span class="lt-tag">跨域</span>
+			<span class="lt-tag-close" aria-hidden="true">×</span>
+		</div>
+		<div class="tag-container">
+			<span class="lt-tag">Linux</span>
+			<span class="lt-tag-close" aria-hidden="true">×</span>
+		</div>
+	</div>
+	<div class="form-group">
 		<label for="status">状态:</label>
 		<select class="article-status" name="status" id="status">
-			<option value="1">发布</option>
-			<option value="2" selected="selected">草稿</option>
+			<option value="1" <?php if( isset($data['article']['status']) && $data['article']['status'] === '1'){ echo "selected"; } ?> >发布</option>
+			<option value="2" <?php if( !isset($data['article']['status']) || $data['article']['status'] !== '1'){ echo "selected"; } ?> >草稿</option>
 		</select>
 	</div>
 	<input class="btn-submit btn btn-info" type="button" value="提交" />
@@ -33,3 +56,8 @@ use yii\helpers\Html;
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
 <script src="../build/js/lt_create.min.js"></script>
+<script>
+	$('.lt-tag-close').on('click',function(){
+		$(this).parents('.tag-container').remove();
+	});
+</script>
