@@ -46,13 +46,13 @@ return [
             ],
             // 'suffix' => '.html',    // url后缀.需要很多js调用的接口也要添加后缀。所以不推荐加上
         ],
-        'db' => array(  
+        'db' => [ 
                 'class' => 'yii\db\Connection',
                 'dsn' => 'mysql:host=localhost;dbname=yii2advanced',
                 'username' => 'root',
                 'password' => 'root',
                 'charset' => 'utf8',
-        ),
+        ],
         'authManage' => [
             'class' => 'yii\rbac\Phpmanager',
         ]

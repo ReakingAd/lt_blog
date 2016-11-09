@@ -39,6 +39,12 @@ class PostController extends Controller{
 	}
 
 	public function actionList(){
+		// $request = Yii::$app -> request;
+		// $keyword = $request -> get('keyword');
+		// echo $keyword;
+		// $list = Article::find() -> where(['status' => 2,'id' => 39]) -> asArray() -> all();
+		// var_dump($list);
+		// die();
 		$isGuest = Yii::$app -> user -> isGuest;
 		if( $isGuest ){
 			$list = Article::find() -> where('status=1') -> asArray() -> all();
@@ -106,7 +112,7 @@ class PostController extends Controller{
 		$article -> title       = $articleInfo['title'];
 		$article -> content     = $articleInfo['content'];
 		$article -> status      = $articleInfo['status'];
-		$article -> keyword      = $articleInfo['keyword'];
+		$article -> keyword     = $articleInfo['keyword'];
 		$article -> update_time = date('Y-m-d h:i:s');
 
 		$result = $article -> save();

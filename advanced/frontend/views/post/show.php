@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 ?>
+<link rel="stylesheet" href="../build/css/lt_show.min.css" />
 <div class="article-desc">
 	<h2><?= Html::encode($data['article']['title']); ?></h2>
 	<p class="clearfix">
@@ -15,9 +16,6 @@ use yii\helpers\Html;
 	<?= $data['article']['content']; ?>
 </div>
 <div class="keyword-container">
-	<div class="article-tag">
-		
-	</div>
 </div>
 
 <br />
@@ -38,24 +36,3 @@ if( typeof lt_values['show'] === 'undefined' ){
 	}
 }
 </script>
-<style>
-
-.click{
-	margin-right: 20px;
-}
-.article-desc{
-	border-bottom: 1px solid #ccc;
-}
-.article-desc p span{
-	line-height: 2;
-}
-.article-container{
-	padding-top:20px;
-}
-table td{
-	border:1px solid #000;
-}
-.capture-pic{
-	border:1px solid #000;
-}
-</style>

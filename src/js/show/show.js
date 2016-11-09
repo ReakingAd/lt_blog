@@ -48,7 +48,6 @@
 			var $container  = $('.keyword-container');
 
 			for( var i=0;i<_keywordArr.length;i++){
-				console.log(_keywordArr[i]);
 				$container.tags({
 					content:_keywordArr[i],
 					canRemove:'false'
