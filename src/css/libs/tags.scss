@@ -1,3 +1,6 @@
+/* 
+* stylesheet for tags.js
+*/
 .tag-container{
 	display: inline-block;
 	border:1px solid #ccc;
@@ -27,4 +30,7 @@
 .tag-container .lt-tag-close:active{
 	border:1px solid #ccc;
 	background-color:#ccc;
+}
+.tag-no-remove{
+	padding-right:8px;
 }

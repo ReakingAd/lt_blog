@@ -100,6 +100,12 @@
 					data:_data,
 					success:function(data){
 						ue.setContent(data.content);
+						var _tagsArr      = data.keyword.split(',');
+						var $tagContainer = $('.keyword-container');
+
+						for( var i=0;i<_tagsArr.length;i++ ){
+							$tagContainer.tags({content:_tagsArr[i]});
+						}
 					}
 				})
 			}

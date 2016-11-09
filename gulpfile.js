@@ -10,6 +10,7 @@ var pkg      = require('./package.json');
 var sass     = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
 
+// js
 gulp.task('jslibs',function(){
 	return gulp.src('src/js/libs/*.js')
 		.pipe(concat('libs.js'))
