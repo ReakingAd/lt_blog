@@ -50,7 +50,6 @@ Tags.prototype.bindingRemove = function(){
 }
 
 jQuery.prototype.tags = function(options){
-	console.log('in')
 	if( typeof options !== 'object' ){
 		console.error('tags.js参数错误。需要一个对象。');
 		return ;
