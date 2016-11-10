@@ -56,6 +56,10 @@ class PostController extends Controller{
 		$data = array(
 			'list' => $list
 		);
+
+		// 热门排行
+		$listHot = Article::find() -> orderBy('pv') -> asArray() -> all();
+		$data['listHot'] = $listHot;
 		return $this -> render('list',['data' => $data]);
 	}
 

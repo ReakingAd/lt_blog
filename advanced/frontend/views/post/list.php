@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_list.min.css" />
 <div class="panel panel-default">
 	<div class="panel-heading">
 		文章列表
@@ -18,17 +19,18 @@ use yii\helpers\Url;
 				</li>
 			<?php } ?>
 		</ul>
-<style>
-.update-time{
-	color:#ccc;
-}
-li{
-	border:1px solid transparent;
-}
-.draft-label{
-	color:#f00;
-	margin-left:10px;
-}
-</style>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		热门排行
+	</div>
+	<div class="panel-body">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<?php var_dump($data['listHot']); ?>
 	</div>
 </div>

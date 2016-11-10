@@ -73,3 +73,12 @@ gulp.task('cssshow',function(){
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/css'))
 })
+gulp.task('csslist',function(){
+	return gulp.src(['src/css/list/*.scss'])
+		.pipe(concat('list.css'))
+		.pipe(sass().on('error', sass.logError))
+		.pipe(cleanCSS())
+		.pipe(rename(pkg.prefix + '_list.min.css')) // 在流中将文件改名
+		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
+		.pipe(gulp.dest('advanced/frontend/web/build/css'))
+})
