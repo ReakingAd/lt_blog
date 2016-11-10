@@ -14,6 +14,7 @@
 			this.goEditArticle();
 			this.countPv();
 			this.showKeyword();
+			this.toTagsList();
 		},
 		// binding edit article
 		goEditArticle:function(){
@@ -53,6 +54,14 @@
 					canRemove:'false'
 				});
 			}
+		},
+		// 跳转标签相关列表
+		toTagsList:function(){
+			$('.keyword-container').on('click','.tag-container',function(){
+				var _tag = $(this).find('.lt-tag').text();
+
+				window.location.href = lt_global.baseurl + '/list/tags/' + _tag;
+			});
 		}
 	}
 }).call(this);

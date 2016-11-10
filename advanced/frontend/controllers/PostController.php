@@ -7,6 +7,7 @@ use frontend\models\User;
 use frontend\models\Article;
 use yii\filters\AccessControl;
 
+
 class PostController extends Controller{
 
 	public $enableCsrfValidation = false; // forbidden the _csrf check intercept
@@ -39,19 +40,19 @@ class PostController extends Controller{
 	}
 
 	public function actionList(){
-		// $request = Yii::$app -> request;
-		// $keyword = $request -> get('keyword');
-		// echo $keyword;
-		// $list = Article::find() -> where(['status' => 2,'id' => 39]) -> asArray() -> all();
-		// var_dump($list);
-		// die();
+		$request = Yii::$app -> request;
+		$keyword = $request -> get('keyword');
 		$isGuest = Yii::$app -> user -> isGuest;
+
+		$query = Article::find();
 		if( $isGuest ){
-			$list = Article::find() -> where('status=1') -> asArray() -> all();
+			$query -> where('status=1');
 		}
-		else{
-			$list = Article::find() -> asArray() -> all();
+		if( !empty($keyword) ){
+			$query -> andWhere(['like', 'keyword', $keyword]);
 		}
+		$list = $query -> asArray() -> all();
+
 		$data = array(
 			'list' => $list
 		);

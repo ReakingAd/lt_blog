@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 ?>
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -9,7 +10,7 @@ use yii\helpers\Html;
 		<ul>
 			<?php foreach($data['list'] as $article) {?>
 				<li>
-					<a class="pull-left" href="../show/<?php echo $article["title"]; ?>"><?php echo $article['title']; ?></a>
+					<a class="pull-left" href="<?php echo Url::base(true) ?>/show/<?php echo $article["title"]; ?>"><?php echo $article['title']; ?></a>
 					<?php if($article['status'] === '2' ) { ?>
 						<i class="draft-label pull-left">[草稿]</i>
 					<?php } ?>

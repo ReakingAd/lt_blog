@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -23,9 +24,17 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="../build/css/lt_libs.min.css" />
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_libs.min.css" />
 </head>
 <body>
+<script>
+if( typeof lt_global === 'undefined' ){
+    var lt_global = {}
+}
+lt_global = {
+    baseurl:'<?php echo Url::base(true); ?>'
+}
+</script>
 <?php $this->beginBody() ?>
 
 <div class="wrap">

@@ -40,7 +40,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,  // 隐藏url中的入口文件index.php
             'rules' => [
-                'list' => 'post/list',
+                'list/tags/<keyword:>' => 'post/list',
                 'show/<title:>' => 'post/show',
                 'create' => 'post/create'
             ],
