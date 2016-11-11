@@ -40,23 +40,57 @@ class PostController extends Controller{
 	}
 
 	public function actionList(){
+		$isGuest = Yii::$app -> user -> isGuest;
+		
+
+		// 所有文章(及按标签查询)
+		$listAll = Article::find();
+		if( $isGuest ){
+			$listAll -> where('status=1');
+		}
 		$request = Yii::$app -> request;
 		$keyword = $request -> get('keyword');
-		$isGuest = Yii::$app -> user -> isGuest;
-
-		$query = Article::find();
-		if( $isGuest ){
-			$query -> where('status=1');
-		}
 		if( !empty($keyword) ){
-			$query -> andWhere(['like', 'keyword', $keyword]);
+			$listAll -> andWhere(['like', 'keyword', $keyword]);
 		}
-		$list = $query -> asArray() -> all();
+		$listAll = $listAll -> asArray() -> all();
+		$data['listAll'] = $listAll;
 
-		$data = array(
-			'list' => $list
-		);
+		// 热门排行
+		$listHot = Article::find();
+		if( $isGuest ){
+			$listHot -> where('status=1');
+		}
+		$listHot = $listHot -> orderBy('pv desc') -> limit(10) -> asArray() -> all();
+		$data['listHot'] = $listHot;
+
+		// 最新文章
+		$listLatest = Article::find();
+		if( $isGuest ){
+			$listLatest -> where('status=1');
+		}
+		$listLatest = $listLatest -> orderBy('update_time desc') -> limit(10) -> asArray() -> all();
+		$data['listLatest'] = $listLatest;
+
+		// 文章关键词
+		$keywords = Article::find();
+		if( $isGuest ){
+			$keywords -> where('status=1');
+		}
+		$keywords = $keywords -> select('keyword') -> asArray() -> all();
+		$keywords = $this -> foo($keywords);
+		$data['keywords'] = $keywords;
+
 		return $this -> render('list',['data' => $data]);
+	}
+	
+	private function foo( $array ){
+		$keywordsArr = Array();
+		foreach( $array as $key => $value ){
+			array_push($keywordsArr,$value['keyword']);
+		}
+		$keywords = implode( ',',array_unique( explode( ',',implode(',',$keywordsArr) ) ) );
+		return $keywords;
 	}
 
 	public function actionCreate(){
@@ -171,4 +205,5 @@ class PostController extends Controller{
 		}
 		echo json_encode($response);
 	}
+
 }
