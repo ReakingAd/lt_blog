@@ -9,13 +9,13 @@ use yii\helpers\Url;
 	</div>
 	<div class="panel-body">
 		<ul>
-			<?php foreach($data['list'] as $article) {?>
+			<?php foreach($data['listAll'] as $listAll) {?>
 				<li>
-					<a class="pull-left" href="<?php echo Url::base(true) ?>/show/<?php echo $article["title"]; ?>"><?php echo $article['title']; ?></a>
-					<?php if($article['status'] === '2' ) { ?>
+					<a class="pull-left" href="<?php echo Url::base(true) ?>/show/<?php echo $listAll["title"]; ?>"><?php echo $listAll['title']; ?></a>
+					<?php if($listAll['status'] === '2' ) { ?>
 						<i class="draft-label pull-left">[草稿]</i>
 					<?php } ?>
-					<span class="update-time pull-right"><?= Html::encode(date('Y-m-d',strtotime($article['update_time']))); ?></span>
+					<span class="update-time pull-right"><?= Html::encode(date('Y-m-d',strtotime($listAll['update_time']))); ?></span>
 				</li>
 			<?php } ?>
 		</ul>
@@ -27,10 +27,35 @@ use yii\helpers\Url;
 	</div>
 	<div class="panel-body">
 		<ul>
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
+			<?php foreach( $data['listHot'] as $listHot ){ ?>
+				<li>
+					<a href="<?php echo Url::base(true); ?>/show/<?php echo $listHot['title'];?>"><?php echo $listHot['title'] ;?></a>
+					<span class="pv pull-right"><?= Html::encode($listHot['pv']); ?></span>
+				</li>
+			<?php } ?>
 		</ul>
-		<?php var_dump($data['listHot']); ?>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		最新文章
+	</div>
+	<div class="panel-body">
+		<ul>
+			<?php foreach( $data['listLatest'] as $listLatest ){ ?>
+				<li>
+					<a href="<?php echo Url::base(true); ?>/show/<?php echo $listLatest['title'];?>"><?php echo $listLatest['title'] ;?></a>
+					<span class="pv pull-right"><?= Html::encode($listLatest['update_time']); ?></span>
+				</li>
+			<?php } ?>
+		</ul>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		标签
+	</div>
+	<div class="panel-body tags-container">
+		<?php var_dump($data['keywords']); ?>
 	</div>
 </div>

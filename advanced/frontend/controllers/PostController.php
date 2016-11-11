@@ -40,26 +40,34 @@ class PostController extends Controller{
 	}
 
 	public function actionList(){
-		$request = Yii::$app -> request;
-		$keyword = $request -> get('keyword');
+		
 		$isGuest = Yii::$app -> user -> isGuest;
-
 		$query = Article::find();
 		if( $isGuest ){
 			$query -> where('status=1');
 		}
+
+		// 所有文章
+		$request = Yii::$app -> request;
+		$keyword = $request -> get('keyword');
 		if( !empty($keyword) ){
 			$query -> andWhere(['like', 'keyword', $keyword]);
 		}
-		$list = $query -> asArray() -> all();
-
-		$data = array(
-			'list' => $list
-		);
+		$listAll = $query -> asArray() -> all();
+		$data['listAll'] = $listAll;
 
 		// 热门排行
-		$listHot = Article::find() -> orderBy('pv') -> asArray() -> all();
+		$listHot = $query -> orderBy('pv desc') -> limit(10) -> asArray() -> all();
 		$data['listHot'] = $listHot;
+
+		// 最新文章
+		$listLatest = $query -> orderBy('update_time desc') -> limit(10) -> asArray() -> all();
+		$data['listLatest'] = $listLatest;
+
+		// 文章关键词
+		// ?????????????????????????????????为什么结构只有10个了？
+		$keywords = $query -> select(['keyword','id']) -> asArray() -> all(); 
+		$data['keywords'] = $keywords;
 		return $this -> render('list',['data' => $data]);
 	}
 
