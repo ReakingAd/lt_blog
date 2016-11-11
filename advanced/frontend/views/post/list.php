@@ -8,15 +8,7 @@ use yii\helpers\Url;
 		标签
 	</div>
 	<div class="panel-body tags-container">
-		<?php var_dump($data['keywords']); ?>
-<?php 
-// $keywordsArr = Array();
-// foreach( $data['keywords'] as $key => $value ){
-// 	array_push($keywordsArr,$value['keyword']);
-// }
-// var_dump(array_unique( explode( ',',implode(',',$keywordsArr) ) ));
-?>
-
+		
 	</div>
 </div>
 <div class="panel panel-default">
@@ -67,3 +59,12 @@ use yii\helpers\Url;
 		</ul>
 	</div>
 </div>
+<script>
+if( typeof lt_list === 'undefined' ){
+	lt_list = {}
+}
+lt_list.keywords = '<?php echo $data['keywords']; ?>';
+</script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt_libs.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt_global.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt_list.min.js"></script>

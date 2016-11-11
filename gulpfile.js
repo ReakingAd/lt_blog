@@ -54,6 +54,14 @@ gulp.task('jstest',function(){
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/js'));
 });
+gulp.task('jslist',function(){
+	return gulp.src(['src/js/list/*.js'])
+		.pipe(concat('list.js'))
+		.pipe(uglify())
+		.pipe(rename(pkg.prefix + '_list.min.js')) // 在流中将文件改名
+		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
+		.pipe(gulp.dest('advanced/frontend/web/build/js'));
+});
 // css
 gulp.task('csslibs',function(){
 	return gulp.src(['src/css/libs/*.scss'])

@@ -78,14 +78,19 @@ class PostController extends Controller{
 			$keywords -> where('status=1');
 		}
 		$keywords = $keywords -> select('keyword') -> asArray() -> all();
-		// var_dump($keywords);
-		// die();
-		// ================	
 		$keywords = $this -> foo($keywords);
-		// ========================
 		$data['keywords'] = $keywords;
 
 		return $this -> render('list',['data' => $data]);
+	}
+	
+	private function foo( $array ){
+		$keywordsArr = Array();
+		foreach( $array as $key => $value ){
+			array_push($keywordsArr,$value['keyword']);
+		}
+		$keywords = implode( ',',array_unique( explode( ',',implode(',',$keywordsArr) ) ) );
+		return $keywords;
 	}
 
 	public function actionCreate(){
@@ -200,15 +205,5 @@ class PostController extends Controller{
 		}
 		echo json_encode($response);
 	}
-	/*
-	*
-	*/
-	private function foo( $array ){
-		$keywordsArr = Array();
-		foreach( $array as $key => $value ){
-			array_push($keywordsArr,$value['keyword']);
-		}
-		$keywords = array_unique( explode( ',',implode(',',$keywordsArr) ) );
-		return $keywords;
-	}
+
 }

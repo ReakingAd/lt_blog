@@ -20,9 +20,6 @@ use yii\helpers\Html;
 
 <br />
 <wb:share-button addition="full" type="button" ralateUid="1899226034"></wb:share-button>
-<script src="../build/js/lt_libs.min.js"></script>
-<script src="../build/js/lt_global.min.js"></script>
-<script src="../build/js/lt_show.min.js"></script>
 <script>
 if( typeof lt_values === 'undefined' ){
 	lt_values = {};
@@ -36,3 +33,6 @@ if( typeof lt_values['show'] === 'undefined' ){
 	}
 }
 </script>
+<script src="../build/js/lt_libs.min.js"></script>
+<script src="../build/js/lt_global.min.js"></script>
+<script src="../build/js/lt_show.min.js"></script>
