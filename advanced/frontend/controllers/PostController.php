@@ -40,34 +40,51 @@ class PostController extends Controller{
 	}
 
 	public function actionList(){
-		
 		$isGuest = Yii::$app -> user -> isGuest;
-		$query = Article::find();
-		if( $isGuest ){
-			$query -> where('status=1');
-		}
+		
 
-		// 所有文章
+		// 所有文章(及按标签查询)
+		$listAll = Article::find();
+		if( $isGuest ){
+			$listAll -> where('status=1');
+		}
 		$request = Yii::$app -> request;
 		$keyword = $request -> get('keyword');
 		if( !empty($keyword) ){
-			$query -> andWhere(['like', 'keyword', $keyword]);
+			$listAll -> andWhere(['like', 'keyword', $keyword]);
 		}
-		$listAll = $query -> asArray() -> all();
+		$listAll = $listAll -> asArray() -> all();
 		$data['listAll'] = $listAll;
 
 		// 热门排行
-		$listHot = $query -> orderBy('pv desc') -> limit(10) -> asArray() -> all();
+		$listHot = Article::find();
+		if( $isGuest ){
+			$listHot -> where('status=1');
+		}
+		$listHot = $listHot -> orderBy('pv desc') -> limit(10) -> asArray() -> all();
 		$data['listHot'] = $listHot;
 
 		// 最新文章
-		$listLatest = $query -> orderBy('update_time desc') -> limit(10) -> asArray() -> all();
+		$listLatest = Article::find();
+		if( $isGuest ){
+			$listLatest -> where('status=1');
+		}
+		$listLatest = $listLatest -> orderBy('update_time desc') -> limit(10) -> asArray() -> all();
 		$data['listLatest'] = $listLatest;
 
 		// 文章关键词
-		// ?????????????????????????????????为什么结构只有10个了？
-		$keywords = $query -> select(['keyword','id']) -> asArray() -> all(); 
+		$keywords = Article::find();
+		if( $isGuest ){
+			$keywords -> where('status=1');
+		}
+		$keywords = $keywords -> select('keyword') -> asArray() -> all();
+		// var_dump($keywords);
+		// die();
+		// ================	
+		$keywords = $this -> foo($keywords);
+		// ========================
 		$data['keywords'] = $keywords;
+
 		return $this -> render('list',['data' => $data]);
 	}
 
@@ -182,5 +199,16 @@ class PostController extends Controller{
 			$response['result'] = 'error';
 		}
 		echo json_encode($response);
+	}
+	/*
+	*
+	*/
+	private function foo( $array ){
+		$keywordsArr = Array();
+		foreach( $array as $key => $value ){
+			array_push($keywordsArr,$value['keyword']);
+		}
+		$keywords = array_unique( explode( ',',implode(',',$keywordsArr) ) );
+		return $keywords;
 	}
 }

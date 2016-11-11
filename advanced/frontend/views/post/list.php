@@ -5,6 +5,22 @@ use yii\helpers\Url;
 <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_list.min.css" />
 <div class="panel panel-default">
 	<div class="panel-heading">
+		标签
+	</div>
+	<div class="panel-body tags-container">
+		<?php var_dump($data['keywords']); ?>
+<?php 
+// $keywordsArr = Array();
+// foreach( $data['keywords'] as $key => $value ){
+// 	array_push($keywordsArr,$value['keyword']);
+// }
+// var_dump(array_unique( explode( ',',implode(',',$keywordsArr) ) ));
+?>
+
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
 		文章列表
 	</div>
 	<div class="panel-body">
@@ -49,13 +65,5 @@ use yii\helpers\Url;
 				</li>
 			<?php } ?>
 		</ul>
-	</div>
-</div>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		标签
-	</div>
-	<div class="panel-body tags-container">
-		<?php var_dump($data['keywords']); ?>
 	</div>
 </div>
