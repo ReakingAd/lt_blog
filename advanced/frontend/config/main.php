@@ -42,7 +42,9 @@ return [
             'rules' => [
                 'list/tags/<keyword:>' => 'post/list',
                 'show/<title:>' => 'post/show',
-                'create' => 'post/create'
+                'create' => 'post/create',
+                'login' => 'site/login',
+                '下载' => 'site/download'
             ],
             // 'suffix' => '.html',    // url后缀.需要很多js调用的接口也要添加后缀。所以不推荐加上
         ],

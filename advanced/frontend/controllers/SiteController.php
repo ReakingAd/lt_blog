@@ -13,6 +13,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Test;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -221,6 +222,10 @@ class SiteController extends Controller
         return $this -> renderPartial('offline');
     }
 
+    public function actionDownload(){
+        return $this -> render('download');
+    }
+
     // for test
     public function actionTest(){
         return $this -> render('test');
@@ -241,5 +246,41 @@ class SiteController extends Controller
             'result' => $result
         );
         echo json_encode($response);
+    }
+
+    public function actionGetfile(){
+        $file_name = Yii::$app -> request -> get('n');
+        $file_dir = './downloads/';
+
+        if( !file_exists($file_dir . $file_name) ){
+            Header('Content-type:text/html;charset=utf-8');
+            echo '文件不存在';
+            die();
+        }
+        else{
+            // 打开文件
+            $file = fopen( $file_dir . $file_name,'r' );
+            // 输入文件标签
+            Header('Content-type:application/actet-stream');
+            Header('Accept-Ranges:bytes');
+            Header('Accept-Length: ' . filesize($file_dir . $file_name) );
+            Header('Content-Disposition:attachment;filename=' . $file_name);
+            // 输出文件内容
+            // 读取文件内容并直接输出到浏览器
+            echo fread( $file,filesize($file_dir . $file_name) );
+            fclose( $file );
+            exit();
+        }
+
+
+
+
+
+
+
+
+
+
+        // $this -> redirect( Url::base(true) . '/downloads/test.zip' );
     }
 }
