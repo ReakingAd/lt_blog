@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '春爬村上树';
@@ -16,5 +16,5 @@ site/index
 	}
 </style>
 
-<script src="build/js/lt_libs.min.js"></script>
-<script src="build/js/lt_global.min.js"></script>
+<script src="<?php echo Url::base(true); ?>build/js/lt_libs.min.js"></script>
+<script src="<?php echo Url::base(true); ?>build/js/lt_global.min.js"></script>
