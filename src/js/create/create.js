@@ -35,8 +35,6 @@
 			var _this = this;
 
 			$('.btn-submit').on('click',function(){
-				// console.log('in')
-				// return;
 				var _title   = $('.article-title').val();
 				var _content = UE.getEditor('editor').getContent();
 				var _id      = $('.ariticle-id').val();
@@ -52,11 +50,11 @@
 				var _ajaxUrl = '';
 				// 更新文章
 				if( _id ){
-					_ajaxUrl = 'post/update';
+					_ajaxUrl = lt_global.baseurl + '/post/update';
 				}
 				// 新建文章
 				else {
-					_ajaxUrl = 'post/save';
+					_ajaxUrl = lt_global.baseurl + '/post/save';
 				}
 				$.ajax({
 					url:_ajaxUrl,
@@ -65,7 +63,7 @@
 					data:_obj,
 					success:function(data){
 						if(data.result === 'success'){
-							window.location.href = 'list';
+							window.location.href = 'post/list';
 						}
 						else{
 							alert(data.result);
