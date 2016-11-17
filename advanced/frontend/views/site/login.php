@@ -17,19 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-lg-5">
-            <!-- <form action="/site/login" id="login-form">
-                <div class="form-group">
-                    <label for="username">用户名</label>
-                    <input type="text" class="username" autofocus />
-                </div>  
-                <div class="form-group">
-                    <label for="passowrd">密码</label>
-                    <input type="password" class="password" />
-                </div>
-                <div class="form-group">
-                    <button type="submit">登录</button>
-                </div>
-            </form> -->
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
