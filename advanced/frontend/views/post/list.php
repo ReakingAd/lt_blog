@@ -23,7 +23,7 @@ use yii\helpers\Url;
 					<?php if($listAll['status'] === '2' ) { ?>
 						<i class="draft-label pull-left">[草稿]</i>
 					<?php } ?>
-					<span class="update-time pull-right"><?= Html::encode(date('Y-m-d',strtotime($listAll['update_time']))); ?></span>
+					<span class="update-time pull-right"><?= Html::encode(date('Y-m-d',strtotime($listAll['create_time']))); ?></span>
 				</li>
 			<?php } ?>
 		</ul>
@@ -53,7 +53,7 @@ use yii\helpers\Url;
 			<?php foreach( $data['listLatest'] as $listLatest ){ ?>
 				<li>
 					<a href="<?php echo Url::base(true); ?>/show/<?php echo $listLatest['title'];?>"><?php echo $listLatest['title'] ;?></a>
-					<span class="pv pull-right"><?= Html::encode($listLatest['update_time']); ?></span>
+					<span class="pv pull-right"><?= Html::encode($listLatest['create_time']); ?></span>
 				</li>
 			<?php } ?>
 		</ul>

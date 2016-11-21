@@ -6,7 +6,7 @@ use yii\helpers\Html;
 	<h2><?= Html::encode($data['article']['title']); ?></h2>
 	<p class="clearfix">
 		<span>点击量：</span><span class="click"><?= Html::encode($data['article']['pv'] + 1); ?></span>
-		<span>日期：</span><span class="update-date"><?= Html::encode(date('Y-m-d',strtotime($data['article']['update_time']))); ?></span>
+		<span>日期：</span><span class="update-date"><?= Html::encode(date('Y-m-d',strtotime($data['article']['create_time']))); ?></span>
 		<?php if( !$data['isGuest'] ){ ?>
 			<button class="btn-edit btn btn-default btn-sm pull-right">修改</button>
 		<?php } ?>
