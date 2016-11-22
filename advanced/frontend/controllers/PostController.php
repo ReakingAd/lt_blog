@@ -122,7 +122,7 @@ class PostController extends Controller{
 		$article -> status      = $articleInfo['status'];
 		$article -> keyword     = $articleInfo['keyword'];
 		// $article -> update_time = date('Y-m-d h:i:s');
-		$article -> create_time = date('Y-m-d h:i:s');
+		$article -> create_time = date('Y-m-d H:i:s');
 
 		$result = $article -> save();
 		// make a response for frondend
@@ -149,7 +149,7 @@ class PostController extends Controller{
 		$article -> content     = $articleInfo['content'];
 		$article -> status      = $articleInfo['status'];
 		$article -> keyword     = $articleInfo['keyword'];
-		$article -> update_time = date('Y-m-d h:i:s');
+		$article -> update_time = date('Y-m-d H:i:s');
 
 		$result = $article -> save();
 		// make a response for frentend
