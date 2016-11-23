@@ -51,6 +51,7 @@ lt_global = {
         // ['label' => 'About', 'url' => ['/site/about']],
         // ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => '下载', 'url' => ['/site/download']],
+        ['label' => '游戏', 'url' => ['/game']],
     ];
     if (Yii::$app->user->isGuest) {
         // $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
