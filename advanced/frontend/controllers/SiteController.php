@@ -271,16 +271,10 @@ class SiteController extends Controller
             fclose( $file );
             exit();
         }
+    }
 
-
-
-
-
-
-
-
-
-
-        // $this -> redirect( Url::base(true) . '/downloads/test.zip' );
+    // Alien Invasion
+    public function actionAlienInvasion(){
+        return $this -> render('alienInvasion');
     }
 }
