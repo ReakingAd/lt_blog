@@ -69,7 +69,7 @@ class PostController extends Controller{
 		if( $isGuest ){
 			$listLatest -> where('status=1');
 		}
-		$listLatest = $listLatest -> orderBy('update_time desc') -> limit(10) -> asArray() -> all();
+		$listLatest = $listLatest -> orderBy('create_time desc') -> limit(10) -> asArray() -> all();
 		$data['listLatest'] = $listLatest;
 
 		// 文章关键词
