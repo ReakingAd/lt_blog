@@ -56,7 +56,7 @@ var indexOf = arr.indexOf;
 
 var class2type = {};
 
-var toString = class2type.toString;
+var toString = class2type.toString; // 这里一定要用Object的原型方法toString()，而不能用Array.prototype.toString()
 
 var hasOwn = class2type.hasOwnProperty;
 
