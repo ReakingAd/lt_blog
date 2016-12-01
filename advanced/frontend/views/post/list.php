@@ -19,7 +19,7 @@ use yii\helpers\Url;
 		<ul>
 			<?php foreach($data['listAll'] as $listAll) {?>
 				<li>
-					<a class="pull-left" href="<?php echo Url::base(true) ?>/show/<?php echo $listAll["title"]; ?>"><?php echo $listAll['title']; ?></a>
+					<a class="pull-left" href="<?php echo Url::base(true) ?>/article/<?php echo $listAll["id"]; ?>/<?php echo $listAll["title"]; ?>"><?php echo $listAll['title']; ?></a>
 					<?php if($listAll['status'] === '2' ) { ?>
 						<i class="draft-label pull-left">[草稿]</i>
 					<?php } ?>
