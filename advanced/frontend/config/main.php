@@ -41,7 +41,7 @@ return [
             'showScriptName' => false,  // 隐藏url中的入口文件index.php
             'rules' => [
                 'list/tags/<keyword:>' => 'post/list',
-                'show/<title:>' => 'post/show',
+                'article/<id:>/<title:>' => 'post/show',
                 'create' => 'post/create',
                 'login' => 'site/login',
                 '下载' => 'site/download',

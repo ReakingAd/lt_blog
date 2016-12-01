@@ -19,8 +19,8 @@
 		// binding edit article
 		goEditArticle:function(){
 			$('.btn-edit').on('click',function(){
-				var _title = lt_values['show']['articleTitle'];
-				var _url = '../create?title=' + _title;
+				var _id  = lt_values['show']['articleId'];
+				var _url = root.blog.global.message.server = '/create?id=' + _id;
 
 				window.location.href = _url;
 			});

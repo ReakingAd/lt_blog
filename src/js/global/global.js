@@ -11,6 +11,7 @@
 
 	root.blog.global = {
 		message:{
+			server:window.location.origin,
 			url_prefix:'../',
 			url_suffix:'.html'
 		},
