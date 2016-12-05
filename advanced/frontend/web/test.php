@@ -1,16 +1,7 @@
 <?php
+$req = $_POST;
+// echo $req;
 
-echo '<br>';
-function test(){
-	$a = '123';
-	echo $a;
-	// var_dump($a);
-	function inner($pp){
-		echo 'inner';
-		echo $pp;
-	}
-	inner($a);
-}
-test();
+echo json_encode( $req );
 
 ?>
