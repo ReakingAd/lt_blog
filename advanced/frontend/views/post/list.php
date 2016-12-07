@@ -37,7 +37,7 @@ use yii\helpers\Url;
 		<ul>
 			<?php foreach( $data['listHot'] as $listHot ){ ?>
 				<li>
-					<a href="<?php echo Url::base(true); ?>/show/<?php echo $listHot['title'];?>"><?php echo $listHot['title'] ;?></a>
+					<a href="<?php echo Url::base(true); ?>/article/<?php echo $listHot['id'];?>/<?php echo $listHot['title'];?>"><?php echo $listHot['title'] ;?></a>
 					<span class="pv pull-right"><?= Html::encode($listHot['pv']); ?></span>
 				</li>
 			<?php } ?>
@@ -52,7 +52,7 @@ use yii\helpers\Url;
 		<ul>
 			<?php foreach( $data['listLatest'] as $listLatest ){ ?>
 				<li>
-					<a href="<?php echo Url::base(true); ?>/show/<?php echo $listLatest['title'];?>"><?php echo $listLatest['title'] ;?></a>
+					<a href="<?php echo Url::base(true); ?>/article/<?php echo $listLatest['id'];?>/<?php echo $listLatest['title'];?>"><?php echo $listLatest['title'] ;?></a>
 					<span class="pv pull-right"><?= Html::encode($listLatest['create_time']); ?></span>
 				</li>
 			<?php } ?>
