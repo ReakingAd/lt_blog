@@ -5,6 +5,17 @@ use yii\helpers\Url;
 <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_list.min.css" />
 <div class="panel panel-default">
 	<div class="panel-heading">
+		北京今日天气
+	</div>
+	<div class="panel-body">
+		<span>PM2.5:</span>
+		<span class="pm2_5">
+			<img src="images/loading.gif" alt="">
+		</span>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
 		标签
 	</div>
 	<div class="panel-body tags-container">

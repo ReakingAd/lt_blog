@@ -207,4 +207,10 @@ class PostController extends Controller{
 		echo json_encode($response);
 	}
 
+	public function actionAqi(){
+		$url='http://www.pm25.in/api/querys/pm2_5.json?token=5j1znBVAsnSf5xQyNQyq&city=beijing';  
+	    $data = file_get_contents($url);  
+	    echo $data; 
+	}
+
 }
