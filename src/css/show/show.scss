@@ -1,4 +1,4 @@
-.click{
+.click,.update-date{
 	margin-right: 20px;
 }
 .article-desc{
@@ -20,4 +20,7 @@ table td{
 	padding-top: 10px;
 	border-top: 1px dashed #ccc;
 	margin-top: 40px;
+}
+iframe{
+	vertical-align:middle;
 }
