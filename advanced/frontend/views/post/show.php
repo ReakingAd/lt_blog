@@ -11,6 +11,7 @@ use yii\helpers\Url;
 		<?php if( !$data['isGuest'] ){ ?>
 			<button class="btn-edit btn btn-default btn-sm pull-right">修改</button>
 		<?php } ?>
+		<wb:share-button appkey="1621124604" addition="simple" type="button" ralateUid="1899226034" default_text="pre"></wb:share-button>
 	</p>
 </div>
 <div class="article-container">
