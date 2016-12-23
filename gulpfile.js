@@ -90,3 +90,12 @@ gulp.task('csslist',function(){
 		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
 		.pipe(gulp.dest('advanced/frontend/web/build/css'))
 })
+gulp.task('cssglobal',function(){
+	return gulp.src(['src/css/global/*.scss'])
+		.pipe(concat('global.css'))
+		.pipe(sass().on('error', sass.logError))
+		.pipe(cleanCSS())
+		.pipe(rename(pkg.prefix + '_global.min.css')) // 在流中将文件改名
+		.pipe(header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n'))
+		.pipe(gulp.dest('advanced/frontend/web/build/css'))
+})

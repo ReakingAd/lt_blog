@@ -25,6 +25,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_global.min.css" />
     <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_libs.min.css" />
 </head>
 <body>
