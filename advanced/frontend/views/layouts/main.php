@@ -91,6 +91,7 @@ lt_global = {
 </footer>
 
 <?php $this->endBody() ?>
+<script src="http://s4.cnzz.com/z_stat.php?id=1259343606&web_id=1259343606" language="JavaScript"></script>
 </body>
 </html>
 <?php $this->endPage() ?>
