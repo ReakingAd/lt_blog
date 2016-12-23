@@ -11,7 +11,7 @@ use yii\helpers\Url;
 		<?php if( !$data['isGuest'] ){ ?>
 			<button class="btn-edit btn btn-default btn-sm pull-right">修改</button>
 		<?php } ?>
-		<wb:share-button appkey="1621124604" addition="simple" type="button" ralateUid="1899226034" default_text="pre"></wb:share-button>
+		<wb:share-button appkey="1621124604" addition="simple" type="button" ralateUid="1899226034" default_text="<?= Html::encode($data['article']['title']); ?>"></wb:share-button>
 	</p>
 </div>
 <div class="article-container">
@@ -21,7 +21,6 @@ use yii\helpers\Url;
 </div>
 
 <br />
-<wb:share-button addition="full" type="button" ralateUid="1899226034"></wb:share-button>
 <script>
 if( typeof lt_values === 'undefined' ){
 	lt_values = {};
