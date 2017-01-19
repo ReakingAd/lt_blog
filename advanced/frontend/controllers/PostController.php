@@ -208,8 +208,7 @@ class PostController extends Controller{
 	}
 
 	public function actionAqi(){
-		// $url='http://www.pm25.in/api/querys/pm2_5.json?token=5j1znBVAsnSf5xQyNQyq&city=beijing';  
-		$url='http://10.2.48.3:8080/api/weather?city=101010100&type=1';  
+		$url='http://es6.reakingad.com/api/weather?city=101010100&type=1';  
 	    $data = file_get_contents($url);  
 	    echo $data; 
 	}
