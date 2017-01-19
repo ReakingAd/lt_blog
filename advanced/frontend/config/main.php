@@ -5,6 +5,8 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
+$secretJSON = file_get_contents('../config/secret.json');
+$secret     = json_decode( $secretJSON );
 
 return [
     'id' => 'app-frontend',
@@ -52,8 +54,8 @@ return [
         'db' => [ 
                 'class' => 'yii\db\Connection',
                 'dsn' => 'mysql:host=localhost;dbname=yii2advanced',
-                'username' => 'root',
-                'password' => 'Pass74123',
+                'username' => $secret -> mysql_user,
+                'password' => $secret -> mysql_pwd,
                 'charset' => 'utf8',
         ],
         'authManage' => [
