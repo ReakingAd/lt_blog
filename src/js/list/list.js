@@ -45,11 +45,18 @@
 				dataType:'json',
 				cache:true,
 				success:function(data){
-					// console.log(data);
+					console.log(data);
 					var pm2_5;
 
-					if( data && !$.isEmptyObject(data) ){
-						pm2_5 = data[data.length-1]['pm2_5'];
+					// if( data && !$.isEmptyObject(data) ){
+					// 	pm2_5 = data[data.length-1]['pm2_5'];
+					// 	$('.pm2_5').html(pm2_5);
+					// }
+					// else{
+					// 	console.warn('获取pm2.5数据出错。');
+					// }
+					if( data && data.aqi_pm25 ){
+						pm2_5 = data.aqi_pm25;
 						$('.pm2_5').html(pm2_5);
 					}
 					else{
