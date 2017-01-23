@@ -1,6 +1,3 @@
 <?php
-// echo 123;
-	$secretJSON = file_get_contents('test.json');
-	$secret = json_decode( $secretJSON );
-	echo $secret -> user;
+	var_dump( date('Y-m-d H:i:s') );
 ?>
