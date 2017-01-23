@@ -208,7 +208,7 @@ class PostController extends Controller{
 	}
 
 	public function actionAqi(){
-		$url='http://es6.reakingad.com/api/weather?city=101010100&type=1';  
+		$url='http://es6.reakingad.com/api/getweather?city=101010100&type=1';  
 	    $data = file_get_contents($url);  
 	    echo $data; 
 	}
