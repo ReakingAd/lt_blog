@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 		<a href="<?php echo Url::base(true); ?>/site/getfile?n=mysql manual.chm">mysql.chm</a>
 	</li>
 	<li>
-		<!-- <a href="<?php echo Url::base(true); ?>/site/getfile?n=<?php echo urlencode('城市站号.xls'); ?>">城市站号.xls</a> -->
-		<a href="<?php echo Url::base(true); ?>/site/getfile?n=citycode.xls">城市站号.xls</a>
+		<a href="<?php echo Url::base(true); ?>/site/getfile?n=城市站号.xls">城市站号.xls</a>
 	</li>
 </ul>

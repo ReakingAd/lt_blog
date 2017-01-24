@@ -250,24 +250,25 @@ class SiteController extends Controller
 
     public function actionGetfile(){
         $file_name = Yii::$app -> request -> get('n');
-        // $file_name=iconv('UTF-8','GB2312',$file_name);
         $file_dir = './downloads/';
-        if( !file_exists($file_dir . $file_name) ){
+        $absolute_dir = iconv( 'UTF-8','GB2312',$file_dir . $file_name ); // 转换为GB2312编码，否则会找不到文件或文件乱码
+
+        if( !file_exists($absolute_dir) ){
             Header('Content-type:text/html;charset=utf-8');
             echo '文件不存在';
             die();
         }
         else{
             // 打开文件
-            $file = fopen( $file_dir . $file_name,'r' );
+            $file = fopen( $absolute_dir,'r' );
             // 输入文件标签
             Header('Content-type:application/actet-stream');
             Header('Accept-Ranges:bytes');
-            Header('Accept-Length: ' . filesize($file_dir . $file_name) );
+            Header('Accept-Length: ' . filesize($absolute_dir) );
             Header('Content-Disposition:attachment;filename=' . $file_name);
             // 输出文件内容
             // 读取文件内容并直接输出到浏览器
-            echo fread( $file,filesize($file_dir . $file_name) );
+            echo fread( $file,filesize($absolute_dir) );
             fclose( $file );
             exit();
         }
