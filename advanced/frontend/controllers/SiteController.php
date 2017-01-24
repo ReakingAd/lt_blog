@@ -250,8 +250,8 @@ class SiteController extends Controller
 
     public function actionGetfile(){
         $file_name = Yii::$app -> request -> get('n');
+        // $file_name=iconv('UTF-8','GB2312',$file_name);
         $file_dir = './downloads/';
-
         if( !file_exists($file_dir . $file_name) ){
             Header('Content-type:text/html;charset=utf-8');
             echo '文件不存在';
