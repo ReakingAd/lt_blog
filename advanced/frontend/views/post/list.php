@@ -69,7 +69,6 @@ use yii\helpers\Url;
 		</ul>
 	</div>
 </div>
-<wb:share-button appkey="1621124604" addition="simple" type="button" ralateUid="1899226034" default_text="春爬村上树"></wb:share-button>
 <script>
 if( typeof lt_list === 'undefined' ){
 	lt_list = {}
