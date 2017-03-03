@@ -27,25 +27,24 @@ use yii\helpers\Url;
 		文章列表
 	</div>
 	<div class="panel-body">
-		<ul>
-			<?php foreach($data['listAll'] as $listAll) {?>
-				<li>
-					<a class="pull-left" href="<?php echo Url::base(true) ?>/article/<?php echo $listAll["id"]; ?>/<?php echo $listAll["title"]; ?>"><?php echo $listAll['title']; ?></a>
-					<?php if($listAll['status'] === '2' ) { ?>
-						<i class="draft-label pull-left">[草稿]</i>
-					<?php } ?>
-					<span class="update-time pull-right"><?= Html::encode(date('Y-m-d',strtotime($listAll['create_time']))); ?></span>
-				</li>
-			<?php } ?>
+		<ul class="article-all"></ul>
+		
+	</div>
+</div>
+<!-- 分页页码 -->
+<div class="x_page_container">
+	<div class="btn-group pull-right">
+		<ul class="lt-pagination">
 		</ul>
 	</div>
 </div>
+<!-- /分页页码 -->
 <div class="panel panel-default">
 	<div class="panel-heading">
 		热门排行
 	</div>
 	<div class="panel-body">
-		<ul>
+		<ul class="article-hot">
 			<?php foreach( $data['listHot'] as $listHot ){ ?>
 				<li>
 					<a href="<?php echo Url::base(true); ?>/article/<?php echo $listHot['id'];?>/<?php echo $listHot['title'];?>"><?php echo $listHot['title'] ;?></a>
@@ -60,7 +59,7 @@ use yii\helpers\Url;
 		最新文章
 	</div>
 	<div class="panel-body">
-		<ul>
+		<ul class="article-latest">
 			<?php foreach( $data['listLatest'] as $listLatest ){ ?>
 				<li>
 					<a href="<?php echo Url::base(true); ?>/article/<?php echo $listLatest['id'];?>/<?php echo $listLatest['title'];?>"><?php echo $listLatest['title'] ;?></a>

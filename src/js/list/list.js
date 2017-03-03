@@ -14,6 +14,7 @@
 			this.showKeyword();
 			this.showKeywordPage();
 			this.getPm2_5();
+			this.searchArticle();
 		},
 		// 创建关键词标签
 		showKeyword:function(){
@@ -57,6 +58,42 @@
 					}
 				}
 			});
+		},
+		searchArticle:function(){
+			var _this = this;
+
+			$('.x_page_container .lt-pagination').LTPagination({
+				ajaxUrl:'../post/search-article',  // ajax获取数据的接口
+				ajaxCallback:_this.filloutArticleList,
+				ajaxExtraParam:{},     // 额外携带的参数，必须为对象。
+			});
+		},
+		filloutArticleList:function(data){
+			var _list = [];
+			if( data && data.list.length > 0 ){
+				_list = data.list;
+			}
+			else{
+				return console.log( '无可用数据.');
+			}
+			var _li = '';
+
+			for( var i=0;i<_list.length;i++ ){
+				var _title       = _list[i].title;
+				var _create_time = _list[i].create_time.split(' ')[0];
+				var _href        = '/article/' + _list[i].id + '/' + _list[i].title;
+				var _status      = _list[i].status;
+				var _draftMark   = '';
+				if( _status === '2' ){
+					_draftMark = '<i class="draft-label pull-left">[草稿]</i>';
+				}
+				_li += '<li><a class="pull-left" href="' + _href + '">' + _title + '</a>' + _draftMark + '<span class="update-time pull-right">' + _create_time + '</span></li>';
+			}
+
+			var $container = $('.article-all');
+
+			$container.html('');
+			$container.append( _li );
 		}
 	}
 }).call(this);
