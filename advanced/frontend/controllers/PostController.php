@@ -6,6 +6,7 @@ use yii\web\Controller;
 use frontend\models\User;
 use frontend\models\Article;
 use yii\filters\AccessControl;
+use yii\data\Pagination;
 
 
 class PostController extends Controller{
@@ -82,6 +83,29 @@ class PostController extends Controller{
 		$data['keywords'] = $keywords;
 
 		return $this -> render('list',['data' => $data]);
+	}
+	
+	/*	
+	* 响应所有文章的分页查询。参数pageNUm,PageSize
+	*/
+	public function actionSearchArticle(){
+		$isGuest  = Yii::$app -> user -> isGuest;
+		$request  = Yii::$app -> request;
+		$pageNum  = $request -> get('pageNum');
+		$pageSize = $request -> get('pageSize');
+		
+		$offsetNum = ($pageNum - 1) * $pageSize;
+		$listAll = Article::find();
+		if( $isGuest ){
+			$listAll -> where('status=1');
+		}
+		$totalCount = $listAll -> count();
+		$list = $listAll -> offSet( $offsetNum ) -> limit( $pageSize ) -> asArray() -> all();
+		$res = Array();
+		$res['list'] = $list;
+		$res['totalCount'] = $totalCount;
+
+		echo json_encode( $res );
 	}
 	
 	private function foo( $array ){
