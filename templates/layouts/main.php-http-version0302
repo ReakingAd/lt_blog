@@ -14,16 +14,19 @@ use yii\helpers\Url;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<!DOCTYPE html xmlns:wb="http://open.weibo.com/wb">
+<html lang="<?= Yii::$app->language ?>" xmlns:wb="http://open.weibo.com/wb">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="wb:webmaster" content="763685fa26fc02c5" />
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_global-a0d59d5f60.min.css" />
-    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_libs-a25c36fd65.min.css" />
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_global.min.css" />
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_libs.min.css" />
 </head>
 <body>
 <script>
@@ -89,6 +92,7 @@ lt_global = {
 </footer>
 
 <?php $this->endBody() ?>
+<script src="http://s4.cnzz.com/z_stat.php?id=1259343606&web_id=1259343606" language="JavaScript"></script>
 </body>
 </html>
 <?php $this->endPage() ?>
