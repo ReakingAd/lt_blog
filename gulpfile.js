@@ -1,3 +1,9 @@
+/**
+ * @desc 
+ * @example 
+ * 		gulp csslibs;gulp rev      构建libs的样式文件。两个任务都要执行，否则会由于缓存导致用户看不到更新
+ * 		gulp jslibs;gulp rev       构建libs的javascript脚本文件。两个任务都要执行，否则会由于缓存导致用户看不到更新
+ */
 'use strict';
 
 const gulp         = require('gulp');
@@ -12,7 +18,9 @@ const cleanCSS     = require('gulp-clean-css');
 const rev          = require('gulp-rev');
 const revCollector = require('gulp-rev-collector');
 const minifyHTML   = require('gulp-minify-html');
-// js
+
+// =============================== javasript ===========================================
+
 gulp.task('jslibs',() => {
 	return gulp.src('src/js/libs/*.js')
 		.pipe( concat('libs.js') )
@@ -27,6 +35,7 @@ gulp.task('jslibs',() => {
 		.pipe( rev.manifest() )
 		.pipe( gulp.dest('rev/js/libs') );
 });
+
 gulp.task('jsglobal',() => {
 	return gulp.src('src/js/global/*.js')
 		.pipe( concat('global.js') )
@@ -38,6 +47,7 @@ gulp.task('jsglobal',() => {
 		.pipe( rev.manifest() )
 		.pipe( gulp.dest('rev/js/global') );
 });
+
 gulp.task('jscreate',() => {
 	return gulp.src( ['src/js/create/*.js'] )
 		.pipe( concat('create.js') )
@@ -61,6 +71,7 @@ gulp.task('jsshow',() => {
 		.pipe( rev.manifest() )
 		.pipe( gulp.dest('rev/js/show') );
 });
+
 gulp.task('jstest',() => {
 	return gulp.src( ['src/js/test/*.js'] )
 		.pipe( concat('test.js') )
@@ -72,6 +83,7 @@ gulp.task('jstest',() => {
 		.pipe( rev.manifest() )
 		.pipe( gulp.dest('rev/js/test') );
 });
+
 gulp.task('jslist',() => {
 	return gulp.src( ['src/js/list/*.js'] )
 		.pipe( concat('list.js') )
@@ -83,7 +95,9 @@ gulp.task('jslist',() => {
 		.pipe( rev.manifest() )
 		.pipe( gulp.dest('rev/js/list') );
 });
-// css
+
+// =============================== css ===========================================
+
 gulp.task('csslibs',() => {
 	return gulp.src( ['src/css/libs/*.scss'] )
 		.pipe( concat('libs.css') )
@@ -136,6 +150,9 @@ gulp.task('cssglobal',() => {
 		.pipe( gulp.dest('rev/css/global') );
 });
 
+/**
+ * @desc 将rev/文件夹记录的文件名修改情况的json文件，找到视图文件中引用过他的views文件的<link>或<script>，将引用路径的文件名也修改。
+ */
 gulp.task('rev', () => {
 	return gulp.src( ['rev/**/**/*.json','templates/**/*.php'] )
 		.pipe( revCollector({
