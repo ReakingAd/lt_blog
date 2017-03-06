@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_list-b1c4f53209.min.css" />
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_list.min.css" />
 <div class="panel panel-default">
 	<div class="panel-heading">
 		北京今日天气
@@ -75,6 +75,6 @@ if( typeof lt_list === 'undefined' ){
 }
 lt_list.keywords = '<?php echo $data['keywords']; ?>';
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_libs-442392e6b3.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_global-47024ca277.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_list-c48ab1f7a6.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt_libs.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt_global.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt_list.min.js"></script>

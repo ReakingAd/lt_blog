@@ -16,5 +16,5 @@ site/index
 	}
 </style>
 
-<script src="<?php echo Url::base(true); ?>build/js/lt_libs-442392e6b3.min.js"></script>
-<script src="<?php echo Url::base(true); ?>build/js/lt_global-47024ca277.min.js"></script>
+<script src="<?php echo Url::base(true); ?>build/js/lt_libs.min.js"></script>
+<script src="<?php echo Url::base(true); ?>build/js/lt_global.min.js"></script>
