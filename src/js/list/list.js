@@ -46,7 +46,6 @@
 				dataType:'json',
 				cache:true,
 				success:function(data){
-					console.log(data);
 					var pm2_5;
 
 					if( data && data.aqi_pm25 ){
