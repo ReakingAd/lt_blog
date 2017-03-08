@@ -3,6 +3,14 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_list.min.css" />
+<div class="row">
+	<div class="col-md-9">
+		<div class="panel panel-default">11111111111</div>
+	</div>
+	<div class="col-md-3">
+		<div class="panel panel-default">22222222222</div>
+	</div>
+</div>
 <div class="panel panel-default">
 	<div class="panel-heading">
 		北京今日天气

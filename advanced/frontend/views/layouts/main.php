@@ -21,9 +21,9 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_global-a0d59d5f60.min.css" />
-    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_libs-a25c36fd65.min.css" />
+    <?php //$this->head() ?>
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_global-fcdb7e7fbf.min.css" />
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_libs-1d3fa32d56.min.css" />
 </head>
 <body>
 <script>
