@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_show-dc725e85d3.min.css" />
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_show-b75136f12d.min.css" />
 <div class="article-desc">
 	<h2><?= Html::encode($data['article']['title']); ?></h2>
 	<p class="clearfix">

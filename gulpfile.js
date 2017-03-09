@@ -1,8 +1,8 @@
 /**
  * @desc 
  * @example 
- * 		gulp csslibs;gulp rev      构建libs的样式文件。两个任务都要执行，否则会由于缓存导致用户看不到更新
- * 		gulp jslibs;gulp rev       构建libs的javascript脚本文件。两个任务都要执行，否则会由于缓存导致用户看不到更新
+ * 		gulp csslibs;gulp html      构建libs的样式文件。两个任务都要执行，否则会由于缓存导致用户看不到更新
+ * 		gulp jslibs;gulp html       构建libs的javascript脚本文件。两个任务都要执行，否则会由于缓存导致用户看不到更新
  */
 'use strict';
 
@@ -153,7 +153,7 @@ gulp.task('cssglobal',() => {
 /**
  * @desc 将rev/文件夹记录的文件名修改情况的json文件，找到视图文件中引用过他的views文件的<link>或<script>，将引用路径的文件名也修改。
  */
-gulp.task('rev', () => {
+gulp.task('html', () => {
 	return gulp.src( ['rev/**/**/*.json','templates/**/*.php'] )
 		.pipe( revCollector({
 			replaceReved:true
