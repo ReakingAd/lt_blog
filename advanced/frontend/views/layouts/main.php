@@ -21,8 +21,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <?php //$this->head() ?>
-    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_global-fcdb7e7fbf.min.css" />
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_global-e77a0d4644.min.css" />
     <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_libs-1d3fa32d56.min.css" />
 </head>
 <body>
@@ -36,50 +35,23 @@ lt_global = {
 </script>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => '春爬村上树',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => '博文', 'url' => ['/post/list']],
-        // ['label' => 'About', 'url' => ['/site/about']],
-        // ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => '下载', 'url' => ['/site/download']],
-        ['label' => '游戏', 'url' => ['/game']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        // $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                '登出 (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+<header></header>
+<nav class="home-nav">
+    <ul>
+        <li class="<?php if($this->title == '首页'){ echo 'nav-active';} ?>" name="homepage"><a href="/" title="春爬村上树-首页">首页</a></li>
+        <li class="<?php if($this->title == '博文列表'){ echo 'nav-active';} ?>" name="list"><a href="post/list" title="春爬村上树-博文列表">博文</a></li>
+        <li class="<?php if($this->title == '下载'){ echo 'nav-active';} ?>" name="downlad"><a href="/" title="春爬村上树-下载">下载</a></li>
+        <li class="<?php if($this->title == '关于我'){ echo 'nav-active';} ?>" name="aboutme"><a href="/" title="春爬村上树-个人简介">关于</a></li>
+    </ul>
+</nav>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+<section class="container">
+    <?= Breadcrumbs::widget([
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
+    <?= Alert::widget() ?>
+    <?= $content ?>
+</section>
 
 <footer class="footer">
     <div class="container">

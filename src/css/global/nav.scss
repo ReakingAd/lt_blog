@@ -1,0 +1,30 @@
+/* new header begin*/
+header{
+    height:150px;
+    background-image:url('../../images/fcb3879e14429d75833a461572e64.jpg');
+}
+
+nav.home-nav ul{
+    text-align:center;
+    font-size:0;
+    li{
+        width:10%;
+        list-style:none;
+        display:inline-block;
+        font-size: 17px;
+        padding: 15px;
+        a{
+            color: #999;
+            text-decoration: none;
+            transition:all 0.1s;
+            &:hover{
+                color:#000;
+            }
+        }
+    }
+}
+.nav-active a{
+    color:#333!important;
+    font-weight: bold;
+}
+/* new header end*/

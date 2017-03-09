@@ -41,6 +41,8 @@ class PostController extends Controller{
 	}
 
 	public function actionList(){
+		$this -> getView() -> title = "博文列表";
+
 		$isGuest = Yii::$app -> user -> isGuest;
 		
 
