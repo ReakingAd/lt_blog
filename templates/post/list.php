@@ -75,9 +75,6 @@ use yii\helpers\Url;
 	</aside>
 </div>
 
-
-
-
 <script>
 if( typeof lt_list === 'undefined' ){
 	lt_list = {}

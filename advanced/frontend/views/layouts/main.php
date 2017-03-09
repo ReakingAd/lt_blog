@@ -40,7 +40,7 @@ lt_global = {
     <ul>
         <li class="<?php if($this->title == '首页'){ echo 'nav-active';} ?>" name="homepage"><a href="/" title="春爬村上树-首页">首页</a></li>
         <li class="<?php if($this->title == '博文列表'){ echo 'nav-active';} ?>" name="list"><a href="post/list" title="春爬村上树-博文列表">博文</a></li>
-        <li class="<?php if($this->title == '下载'){ echo 'nav-active';} ?>" name="downlad"><a href="/" title="春爬村上树-下载">下载</a></li>
+        <li class="<?php if($this->title == '下载'){ echo 'nav-active';} ?>" name="downlad"><a href="site/download" title="春爬村上树-下载">下载</a></li>
         <li class="<?php if($this->title == '关于我'){ echo 'nav-active';} ?>" name="aboutme"><a href="/" title="春爬村上树-个人简介">关于</a></li>
     </ul>
 </nav>

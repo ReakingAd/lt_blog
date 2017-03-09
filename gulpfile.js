@@ -96,6 +96,18 @@ gulp.task('jslist',() => {
 		.pipe( gulp.dest('rev/js/list') );
 });
 
+gulp.task('jshome',() => {
+	return gulp.src( ['src/js/homepage/*.js'] )
+		.pipe( concat('homepage.js') )
+		.pipe( uglify() )
+		.pipe( rename(pkg.prefix + '_homepage.min.js') ) // 在流中将文件改名
+		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
+		.pipe( rev() )
+		.pipe( gulp.dest('advanced/frontend/web/build/js') )
+		.pipe( rev.manifest() )
+		.pipe( gulp.dest('rev/js/homepage') );
+});
+
 // =============================== css ===========================================
 
 gulp.task('csslibs',() => {
@@ -149,6 +161,7 @@ gulp.task('cssglobal',() => {
 		.pipe( rev.manifest() )
 		.pipe( gulp.dest('rev/css/global') );
 });
+
 
 /**
  * @desc 将rev/文件夹记录的文件名修改情况的json文件，找到视图文件中引用过他的views文件的<link>或<script>，将引用路径的文件名也修改。

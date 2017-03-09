@@ -14,6 +14,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Test;
 use yii\helpers\Url;
+use frontend\models\Article;
 
 /**
  * Site controller
@@ -77,9 +78,41 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
-    {
-        return $this->render('index');
+    public function actionIndex(){
+        $this -> getView() -> title = '首页';
+
+        return $this->render('homepage');
+    }
+
+    /*
+    * @param {String} 1to3 最新的在最前，返回第1篇-第3篇
+    * @desc 返回最新的指定数量的文章
+    */     
+    public function actionGetNewarticle(){
+        $result = Array();
+
+        $request = Yii::$app -> request;
+        $rangeStr = $request -> get('range');
+        $range = explode('to',$rangeStr);
+        $offset = $range[0] - 1;
+        $sum = $range[1] - $range[0] + 1;
+        if( $sum <= 0 ){
+            $result['status'] = 'error';
+            $result['msg'] = '参数错误';
+            
+            echo json_encode( $result ); 
+        }
+
+        $isGuest = Yii::$app -> user -> isGuest;
+        $articles = Article::find();
+        if( $isGuest ){
+            $articles -> where('status=1');
+        }
+        $articles = $articles -> orderBy('create_time desc') -> offset( $offset ) -> limit( $sum ) -> asArray() -> all();
+        $result['status'] = 'success';
+        $result['msg'] = $articles;
+
+        echo json_encode( $result );
     }
 
     /**
@@ -223,6 +256,7 @@ class SiteController extends Controller
     }
 
     public function actionDownload(){
+        $this -> getView() -> title = '下载';
         return $this -> render('download');
     }
 

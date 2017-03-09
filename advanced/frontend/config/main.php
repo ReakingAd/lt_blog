@@ -64,7 +64,7 @@ return [
     ],
     'params' => $params,
     'timeZone' => 'Asia/Chongqing',   // 修改时区
-    'defaultRoute' => 'post/list',     // 缺省路由
+    // 'defaultRoute' => 'post/list',     // 缺省路由
     // 'catchAll' => ['site/offline'],       // 全拦截路由
 ];
 

@@ -86,6 +86,19 @@ class PostController extends Controller{
 
 		return $this -> render('list',['data' => $data]);
 	}
+
+	public function actionGetKeywords(){
+		// 文章关键词
+		$keywords = Article::find();
+		$isGuest = Yii::$app -> user -> isGuest;
+		if( $isGuest ){
+			$keywords -> where('status=1');
+		}
+		$keywords = $keywords -> select('keyword') -> asArray() -> all();
+		$keywords = $this -> foo($keywords);
+
+		echo json_encode( $keywords );
+	}
 	
 	/*	
 	* 响应所有文章的分页查询。参数pageNUm,PageSize
