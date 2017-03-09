@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-download-a77933cf0e.min.css" />
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-share.min.css" />
 <div class="row">
 	<div class="panel panel-default">
 		<div class="panel-heading">

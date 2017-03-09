@@ -21,8 +21,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_global-e77a0d4644.min.css" />
-    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_libs-1d3fa32d56.min.css" />
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-libs-aa3e03cd8e.min.css" />
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-global-59758bb71e.min.css" />
 </head>
 <body>
 <script>
@@ -38,10 +38,10 @@ lt_global = {
 <header></header>
 <nav class="home-nav">
     <ul>
-        <li class="<?php if($this->title == '首页'){ echo 'nav-active';} ?>" name="homepage"><a href="/" title="春爬村上树-首页">首页</a></li>
-        <li class="<?php if($this->title == '博文列表'){ echo 'nav-active';} ?>" name="list"><a href="post/list" title="春爬村上树-博文列表">博文</a></li>
-        <li class="<?php if($this->title == '下载'){ echo 'nav-active';} ?>" name="downlad"><a href="site/download" title="春爬村上树-下载">下载</a></li>
-        <li class="<?php if($this->title == '关于我'){ echo 'nav-active';} ?>" name="aboutme"><a href="/" title="春爬村上树-个人简介">关于</a></li>
+        <li class="<?php if($this->title == '首页'){ echo 'nav-active';} ?>" name="homepage"><a href="/" title="首页-春爬村上树">首页</a></li>
+        <li class="<?php if($this->title == '博文列表'){ echo 'nav-active';} ?>" name="list"><a href="/post/list" title="博文列表-春爬村上树">博文</a></li>
+        <li class="<?php if($this->title == '资源分享'){ echo 'nav-active';} ?>" name="share"><a href="/site/share" title="资源分享-春爬村上树">分享</a></li>
+        <li class="<?php if($this->title == '关于我'){ echo 'nav-active';} ?>" name="aboutme"><a href="/site/aboutme" title="个人简介-春爬村上树">关于</a></li>
     </ul>
 </nav>
 

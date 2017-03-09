@@ -64,6 +64,7 @@
 			$('.x_page_container .lt-pagination').LTPagination({
 				ajaxUrl:'../post/search-article',  // ajax获取数据的接口
 				ajaxCallback:_this.filloutArticleList,
+				pageSize:15,
 				ajaxExtraParam:{},     // 额外携带的参数，必须为对象。
 			});
 		},

@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_list.min.css" />
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-list.min.css" />
 <div class="row">
 	<main class="col-md-9">
 		<div class="panel panel-default">
@@ -81,6 +81,6 @@ if( typeof lt_list === 'undefined' ){
 }
 lt_list.keywords = '<?php echo $data['keywords']; ?>';
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_libs.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_global.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_list.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-global.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-list.min.js"></script>

@@ -83,38 +83,6 @@ class SiteController extends Controller
 
         return $this->render('homepage');
     }
-
-    /*
-    * @param {String} 1to3 最新的在最前，返回第1篇-第3篇
-    * @desc 返回最新的指定数量的文章
-    */     
-    public function actionGetNewarticle(){
-        $result = Array();
-
-        $request = Yii::$app -> request;
-        $rangeStr = $request -> get('range');
-        $range = explode('to',$rangeStr);
-        $offset = $range[0] - 1;
-        $sum = $range[1] - $range[0] + 1;
-        if( $sum <= 0 ){
-            $result['status'] = 'error';
-            $result['msg'] = '参数错误';
-            
-            echo json_encode( $result ); 
-        }
-
-        $isGuest = Yii::$app -> user -> isGuest;
-        $articles = Article::find();
-        if( $isGuest ){
-            $articles -> where('status=1');
-        }
-        $articles = $articles -> orderBy('create_time desc') -> offset( $offset ) -> limit( $sum ) -> asArray() -> all();
-        $result['status'] = 'success';
-        $result['msg'] = $articles;
-
-        echo json_encode( $result );
-    }
-
     /**
      * Logs in a user.
      *
@@ -122,9 +90,9 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+        // if (!Yii::$app->user->isGuest) {
+        //     return $this->goHome();
+        // }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
@@ -255,31 +223,10 @@ class SiteController extends Controller
         return $this -> renderPartial('offline');
     }
 
-    public function actionDownload(){
-        $this -> getView() -> title = '下载';
-        return $this -> render('download');
-    }
+    public function actionShare(){
+        $this -> getView() -> title = '资源分享';
 
-    // for test
-    public function actionTest(){
-        return $this -> render('test');
-    }
-
-    // for test
-    public function actionTest2(){
-        $request = Yii::$app -> request;
-        $username = $request -> post('username');
-        $password = $request -> post('password');
-        
-        $test = new Test;
-        $test -> username = $username;
-        $test -> password = md5($password);
-        $result = $test -> save();
-
-        $response = array(
-            'result' => $result
-        );
-        echo json_encode($response);
+        return $this -> render('share');
     }
 
     public function actionGetfile(){
@@ -311,5 +258,34 @@ class SiteController extends Controller
     // Alien Invasion
     public function actionAlienInvasion(){
         return $this -> render('alienInvasion');
+    }
+
+    public function actionAboutme(){
+        $this -> getView() -> title = '关于我';
+        return $this -> render('aboutme');
+    }
+    // for test
+    public function actionTest(){
+        $str = 'fff123';
+        $res = explode( $str,'aa');
+        var_dump($res);
+        // return $this -> render('test');
+    }
+
+    // for test
+    public function actionTest2(){
+        $request = Yii::$app -> request;
+        $username = $request -> post('username');
+        $password = $request -> post('password');
+        
+        $test = new Test;
+        $test -> username = $username;
+        $test -> password = md5($password);
+        $result = $test -> save();
+
+        $response = array(
+            'result' => $result
+        );
+        echo json_encode($response);
     }
 }

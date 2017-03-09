@@ -1,25 +1,9 @@
 <?php
 use yii\helpers\Url;
-
 ?>
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-homepage-a8c698b673.min.css" />
 <div class="row">
-	<main class="col-md-9">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				文章列表
-			</div>
-			<div class="panel-body">
-				<ul class="article-all"></ul>
-			</div>
-		</div>
-		<!-- 分页页码 -->
-		<div class="x_page_container">
-			<div class="btn-group pull-right">
-				<ul class="lt-pagination">
-				</ul>
-			</div>
-		</div>
-		<!-- /分页页码 -->
+	<main class="col-md-9 article-container">
 	</main>
 	<aside class="col-md-3">
 		<div class="panel panel-default">
@@ -48,6 +32,6 @@ if( typeof lt_homepage === 'undefined' ){
 	lt_homepage = {}
 }
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_libs-442392e6b3.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_global-47024ca277.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_homepage-b0eec5f7a0.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-5b35f0a97d.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-homepage-38d316d585.min.js"></script>
