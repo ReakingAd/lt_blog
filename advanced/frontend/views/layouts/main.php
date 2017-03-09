@@ -22,7 +22,7 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-libs-aa3e03cd8e.min.css" />
-    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-global-59758bb71e.min.css" />
+    <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-global-c8dcd4ef90.min.css" />
 </head>
 <body>
 <script>
