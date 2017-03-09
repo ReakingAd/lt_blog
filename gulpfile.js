@@ -28,7 +28,7 @@ gulp.task('jslibs',() => {
 			// mangle:true,  // 混淆变量名
 			// preserveComments:'all', // all保留注释
 		}))
-		.pipe( rename(pkg.prefix + '_libs.min.js') )
+		.pipe( rename(pkg.prefix + '-libs.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/js') )
@@ -40,7 +40,7 @@ gulp.task('jsglobal',() => {
 	return gulp.src('src/js/global/*.js')
 		.pipe( concat('global.js') )
 		.pipe( uglify() )
-		.pipe( rename(pkg.prefix + '_global.min.js') )
+		.pipe( rename(pkg.prefix + '-global.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/js') )
@@ -52,7 +52,7 @@ gulp.task('jscreate',() => {
 	return gulp.src( ['src/js/create/*.js'] )
 		.pipe( concat('create.js') )
 		.pipe( uglify() )
-		.pipe( rename(pkg.prefix + '_create.min.js') ) // 在流中将文件改名
+		.pipe( rename(pkg.prefix + '-create.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/js') )
@@ -64,7 +64,7 @@ gulp.task('jsshow',() => {
 	return gulp.src( ['src/js/show/*.js'] )
 		.pipe( concat('show.js') )
 		.pipe( uglify() )
-		.pipe( rename(pkg.prefix + '_show.min.js') ) // 在流中将文件改名
+		.pipe( rename(pkg.prefix + '-show.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/js') )
@@ -76,7 +76,7 @@ gulp.task('jstest',() => {
 	return gulp.src( ['src/js/test/*.js'] )
 		.pipe( concat('test.js') )
 		.pipe( uglify() )
-		.pipe( rename(pkg.prefix + '_test.min.js') ) // 在流中将文件改名
+		.pipe( rename(pkg.prefix + '-test.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/js') )
@@ -88,12 +88,24 @@ gulp.task('jslist',() => {
 	return gulp.src( ['src/js/list/*.js'] )
 		.pipe( concat('list.js') )
 		.pipe( uglify() )
-		.pipe( rename(pkg.prefix + '_list.min.js') ) // 在流中将文件改名
+		.pipe( rename(pkg.prefix + '-list.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/js') )
 		.pipe( rev.manifest() )
 		.pipe( gulp.dest('rev/js/list') );
+});
+
+gulp.task('jshome',() => {
+	return gulp.src( ['src/js/homepage/*.js'] )
+		.pipe( concat('homepage.js') )
+		.pipe( uglify() )
+		.pipe( rename(pkg.prefix + '-homepage.min.js') )
+		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
+		.pipe( rev() )
+		.pipe( gulp.dest('advanced/frontend/web/build/js') )
+		.pipe( rev.manifest() )
+		.pipe( gulp.dest('rev/js/homepage') );
 });
 
 // =============================== css ===========================================
@@ -103,7 +115,7 @@ gulp.task('csslibs',() => {
 		.pipe( concat('libs.css') )
 		.pipe( sass().on('error', sass.logError) )
 		.pipe( cleanCSS() )
-		.pipe( rename(pkg.prefix + '_libs.min.css') ) // 在流中将文件改名
+		.pipe( rename(pkg.prefix + '-libs.min.css') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/css') )
@@ -116,7 +128,7 @@ gulp.task('cssshow',() => {
 		.pipe( concat('show.css') )
 		.pipe( sass().on('error', sass.logError) )
 		.pipe( cleanCSS() )
-		.pipe( rename(pkg.prefix + '_show.min.css') ) // 在流中将文件改名
+		.pipe( rename(pkg.prefix + '-show.min.css') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/css') )
@@ -129,7 +141,7 @@ gulp.task('csslist',() => {
 		.pipe( concat('list.css') )
 		.pipe( sass().on('error', sass.logError) )
 		.pipe( cleanCSS() )
-		.pipe( rename(pkg.prefix + '_list.min.css') ) // 在流中将文件改名
+		.pipe( rename(pkg.prefix + '-list.min.css') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/css') )
@@ -142,12 +154,51 @@ gulp.task('cssglobal',() => {
 		.pipe( concat('global.css') )
 		.pipe( sass().on('error', sass.logError) )
 		.pipe( cleanCSS() )
-		.pipe( rename(pkg.prefix + '_global.min.css') ) // 在流中将文件改名
+		.pipe( rename(pkg.prefix + '-global.min.css') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
 		.pipe( gulp.dest('advanced/frontend/web/build/css') )
 		.pipe( rev.manifest() )
 		.pipe( gulp.dest('rev/css/global') );
+});
+
+gulp.task('csshome',() => {
+	return gulp.src( ['src/css/homepage/*.scss'] )
+		.pipe( concat('homepage.css') )
+		.pipe( sass().on('error', sass.logError) )
+		.pipe( cleanCSS() )
+		.pipe( rename(pkg.prefix + '-homepage.min.css') )
+		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
+		.pipe( rev() )
+		.pipe( gulp.dest('advanced/frontend/web/build/css') )
+		.pipe( rev.manifest() )
+		.pipe( gulp.dest('rev/css/homepage') );
+});
+
+gulp.task('cssshare',() => {
+	return gulp.src( ['src/css/share/*.scss'] )
+		.pipe( concat('homepage.css') )
+		.pipe( sass().on('error', sass.logError) )
+		.pipe( cleanCSS() )
+		.pipe( rename(pkg.prefix + '-share.min.css') )
+		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
+		.pipe( rev() )
+		.pipe( gulp.dest('advanced/frontend/web/build/css') )
+		.pipe( rev.manifest() )
+		.pipe( gulp.dest('rev/css/share') );
+});
+
+gulp.task('cssaboutme',() => {
+	return gulp.src( ['src/css/aboutme/*.scss'] )
+		.pipe( concat('homepage.css') )
+		.pipe( sass().on('error', sass.logError) )
+		.pipe( cleanCSS() )
+		.pipe( rename(pkg.prefix + '-aboutme.min.css') )
+		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
+		.pipe( rev() )
+		.pipe( gulp.dest('advanced/frontend/web/build/css') )
+		.pipe( rev.manifest() )
+		.pipe( gulp.dest('rev/css/aboutme') );
 });
 
 /**

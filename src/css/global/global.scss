@@ -5,3 +5,10 @@ body{
 	background-color:#eee;
 	background-image:url('../../images/bg-pattern.png');
 }
+a{
+    color:#999;
+    &:hover{
+        text-decoration:none;
+        color:#000;
+    }
+}

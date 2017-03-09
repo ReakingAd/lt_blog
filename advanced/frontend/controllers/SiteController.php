@@ -14,6 +14,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Test;
 use yii\helpers\Url;
+use frontend\models\Article;
 
 /**
  * Site controller
@@ -77,11 +78,11 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
+    public function actionIndex(){
+        $this -> getView() -> title = '首页';
 
+        return $this->render('homepage');
+    }
     /**
      * Logs in a user.
      *
@@ -89,9 +90,9 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+        // if (!Yii::$app->user->isGuest) {
+        //     return $this->goHome();
+        // }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
@@ -222,30 +223,10 @@ class SiteController extends Controller
         return $this -> renderPartial('offline');
     }
 
-    public function actionDownload(){
-        return $this -> render('download');
-    }
+    public function actionShare(){
+        $this -> getView() -> title = '资源分享';
 
-    // for test
-    public function actionTest(){
-        return $this -> render('test');
-    }
-
-    // for test
-    public function actionTest2(){
-        $request = Yii::$app -> request;
-        $username = $request -> post('username');
-        $password = $request -> post('password');
-        
-        $test = new Test;
-        $test -> username = $username;
-        $test -> password = md5($password);
-        $result = $test -> save();
-
-        $response = array(
-            'result' => $result
-        );
-        echo json_encode($response);
+        return $this -> render('share');
     }
 
     public function actionGetfile(){
@@ -277,5 +258,34 @@ class SiteController extends Controller
     // Alien Invasion
     public function actionAlienInvasion(){
         return $this -> render('alienInvasion');
+    }
+
+    public function actionAboutme(){
+        $this -> getView() -> title = '关于我';
+        return $this -> render('aboutme');
+    }
+    // for test
+    public function actionTest(){
+        $str = 'fff123';
+        $res = explode( $str,'aa');
+        var_dump($res);
+        // return $this -> render('test');
+    }
+
+    // for test
+    public function actionTest2(){
+        $request = Yii::$app -> request;
+        $username = $request -> post('username');
+        $password = $request -> post('password');
+        
+        $test = new Test;
+        $test -> username = $username;
+        $test -> password = md5($password);
+        $result = $test -> save();
+
+        $response = array(
+            'result' => $result
+        );
+        echo json_encode($response);
     }
 }

@@ -15,7 +15,6 @@ use yii\helpers\Html;
 	<div class="form-group">
 		<label for="keyword">标签：</label>
 		<input id="keyword" type="text" />
-		<!-- <button class="btn btn-default btn-sm btn-addtag">添加</button> -->
 		<input class="btn btn-default btn-sm btn-addtag" type="button" value="添加" />
 	</div>
 	<div class="form-group keyword-container">
@@ -33,11 +32,11 @@ use yii\helpers\Html;
 	</div>
 </form>
 
-<script src="../build/js/lt_libs-442392e6b3.min.js"></script>
-<script src="../build/js/lt_global-47024ca277.min.js"></script>
+<script src="../build/js/lt-libs-5b35f0a97d.min.js"></script>
+<script src="../build/js/lt-global-323f788beb.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
 <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
-<script src="../build/js/lt_create-61ceb884d3.min.js"></script>
+<script src="../build/js/lt-create-504df350db.min.js"></script>

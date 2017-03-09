@@ -5,8 +5,8 @@
 	<input class="login" type="button" value="login" />
 </form>
 <button class="btn btn-default">click</button>
-<script src="../build/js/lt_libs-442392e6b3.min.js"></script>
-<script src="../build/js/lt_global-47024ca277.min.js"></script>
+<script src="../build/js/lt_libs.min.js"></script>
+<script src="../build/js/lt_global.min.js"></script>
 <script src="../build/js/lt_test-6d21f8db16.min.js"></script>
 <script>
 $(document).ready(function(){

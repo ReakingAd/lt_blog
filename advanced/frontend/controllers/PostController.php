@@ -86,6 +86,19 @@ class PostController extends Controller{
 
 		return $this -> render('list',['data' => $data]);
 	}
+
+	public function actionGetKeywords(){
+		// 文章关键词
+		$keywords = Article::find();
+		$isGuest = Yii::$app -> user -> isGuest;
+		if( $isGuest ){
+			$keywords -> where('status=1');
+		}
+		$keywords = $keywords -> select('keyword') -> asArray() -> all();
+		$keywords = $this -> foo($keywords);
+
+		echo json_encode( $keywords );
+	}
 	
 	/*	
 	* 响应所有文章的分页查询。参数pageNUm,PageSize
@@ -238,5 +251,46 @@ class PostController extends Controller{
 	    $data = file_get_contents($url);  
 	    echo $data; 
 	}
+
+    /*
+    * @param {String} 1to3 返回最新的文章1篇或连续多篇
+    * @desc 返回最新的指定数量的文章
+	* @example  1to3 返回最新的第1篇至第3篇
+	*           5 返回最新的第五篇。
+    */     
+    public function actionGetNewarticle(){
+        $result   = Array();
+        $request  = Yii::$app -> request;
+        $rangeStr = $request -> get('range');
+		$hasStrTo       = strstr( $rangeStr,'to' );
+		// 参数中不含 to
+		if( !$hasStrTo ){
+			$offset = (int)$rangeStr;
+			$sum    = 1;
+		}
+		// 参数中包含 to
+		else{
+			$range  = explode('to',$rangeStr);
+			$offset = $range[0] - 1;
+			$sum    = $range[1] - $range[0] + 1;
+			if( $sum <= 0 ){
+				$result['status'] = 'error';
+				$result['msg'] = '参数错误';
+				
+				echo json_encode( $result ); 
+			}
+		}
+
+        $isGuest = Yii::$app -> user -> isGuest;
+        $articles = Article::find();
+        if( $isGuest ){
+            $articles -> where('status=1');
+        }
+        $articles = $articles -> orderBy('create_time desc') -> offset( $offset ) -> limit( $sum ) -> asArray() -> all();
+        $result['status'] = 'success';
+        $result['msg'] = $articles;
+
+        echo json_encode( $result );
+    }
 
 }

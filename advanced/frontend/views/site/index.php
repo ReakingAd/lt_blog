@@ -1,12 +1,47 @@
 <?php
 use yii\helpers\Url;
-/* @var $this yii\web\View */
 
-$this->title = '春爬村上树';
 ?>
-<div class="home-container">
-site/index
-
+<div class="row">
+	<main class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				文章列表
+			</div>
+			<div class="panel-body">
+				<ul class="article-all"></ul>
+			</div>
+		</div>
+		<!-- 分页页码 -->
+		<div class="x_page_container">
+			<div class="btn-group pull-right">
+				<ul class="lt-pagination">
+				</ul>
+			</div>
+		</div>
+		<!-- /分页页码 -->
+	</main>
+	<aside class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				北京今日天气
+			</div>
+			<div class="panel-body">
+				<span>PM2.5:</span>
+				<span class="pm2_5">
+					<img src="images/loading.gif" alt="">
+				</span>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				标签
+			</div>
+			<div class="panel-body tags-container">
+				
+			</div>
+		</div>
+	</aside>
 </div>
 <style>
 	.main-container{

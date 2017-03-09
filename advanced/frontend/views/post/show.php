@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt_show-b75136f12d.min.css" />
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-show-6e3fcb6cc1.min.css" />
 <div class="article-desc">
 	<h2><?= Html::encode($data['article']['title']); ?></h2>
 	<p class="clearfix">
@@ -34,6 +34,6 @@ if( typeof lt_values['show'] === 'undefined' ){
 	}
 }
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_libs-442392e6b3.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_global-47024ca277.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt_show-abaa6a20e9.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-5b35f0a97d.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-show-f790554fde.min.js"></script>
