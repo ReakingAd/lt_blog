@@ -89,7 +89,7 @@
 			};
 
 			if( _id ){
-				var _url =  root.blog.global.message.url_prefix + 'post/get-article?id=' + _id;
+				var _url =  root.blog.global.message.url_prefix + 'post/get-article-by-id?id=' + _id;
 
 				$.ajax({
 					url:_url,
@@ -97,8 +97,14 @@
 					dataType:'json',
 					data:_data,
 					success:function(data){
-						ue.setContent(data.content);
-						var _tagsArr      = data.keyword.split(',');
+						if( data && data.status && data.status === 'success' ){
+							var _article = data.msg;
+						}
+						else{
+							return console.log('文章不正确');
+						}
+						ue.setContent(_article.content);
+						var _tagsArr      = _article.keyword.split(',');
 						var $tagContainer = $('.keyword-container');
 
 						for( var i=0;i<_tagsArr.length;i++ ){

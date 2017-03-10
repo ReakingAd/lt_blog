@@ -181,17 +181,18 @@ class PostController extends Controller{
 
 		echo json_encode( $result );
 	}
-
+	/*
+	*@param  {string} id
+	*@desc  如果有参数id，则编辑这个id的文章。如果没有参数id则，编辑空文章
+	*/
 	public function actionCreate(){
 		$data = array(
 			'article' => ''
 		);
-		// if the id is exist , go to edit the article
 		$request = Yii::$app -> request;
-		// $title = $request -> get('title');
 		$id = $request -> get('id');
+		// get the article by id
 		if(isset($id)){
-			// get the article by id
 			$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
 			$data['article'] = $article;
 		}
@@ -253,33 +254,53 @@ class PostController extends Controller{
 		echo json_encode($res);
 	}
 
+	/*
+	*@desc 渲染文章展示页面你的视图
+	*/
 	public function actionShow(){
 		$isGuest = Yii::$app -> user -> isGuest;
 		$request = Yii::$app -> request;
-		$id = $request -> get('id');
-		// get the article by title
-		$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
 		$data = array(
 			'isGuest' => $isGuest,
-			'article' => $article
 		);
+
 		return $this -> render('show',['data' => $data]);
 	}
 
-	// interface : get article by id 
-	public function actionGetArticle(){
+	/*
+	*@param {String} id
+	*@return {JSON} 指定id的文章
+	*/ 
+	public function actionGetArticleById(){
+		$result = Array();
 		$request = Yii::$app -> request;
-		$id = $request -> post('id');
+		$id = $request -> get('id');
 		$article = Article::find() -> where('id=:id',[':id' => $id]) -> asArray() -> one();
-		echo json_encode($article);
+
+		$isGuest = Yii::$app -> user -> isGuest;
+		$status = $article['status'];
+		// 如果是未登陆，且该篇文章是草稿，则返回错误信息。
+		if( $isGuest && $status == 2 ){
+			$result['status'] = 'error';
+			$result['msg'] = '查无此文';
+		}
+		else{
+			$result['status'] = 'success';
+			$result['msg'] = $article;
+		}
+
+		echo json_encode( $result );
 	}
 
-	// interface : count PV of current page
+	/*
+	*@param {String}  id
+	*@desc 接收post请求，为文章的点击量 +1
+	*/
 	public function actionCountPv(){
 		$request = Yii::$app -> request;
-		$title = $request -> post('title');
+		$id = $request -> post('id');
 
-		$article = Article::find() -> where('title=:title',[':title' => $title]) -> one();
+		$article = Article::find() -> where('id=:id',[':id' => $id]) -> one();
 		$oldPv = $article -> pv;
 		$pv = $oldPv + 1;
 		$article -> pv = $pv;
@@ -293,6 +314,7 @@ class PostController extends Controller{
 		else{
 			$response['result'] = 'error';
 		}
+
 		echo json_encode($response);
 	}
 
