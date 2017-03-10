@@ -69,6 +69,6 @@ if( typeof lt_list === 'undefined' ){
 	lt_list = {}
 }
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-608d93d1e7.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-c78a64c110.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-list-c9b47d5153.min.js"></script>
