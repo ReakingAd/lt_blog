@@ -3,7 +3,7 @@ use yii\helpers\Url;
 ?>
 <link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-homepage-a8c698b673.min.css" />
 <div class="row">
-	<main class="col-md-9 article-container">
+	<main class="col-md-9 article-container list-container">
 	</main>
 	<aside class="col-md-3">
 		<div class="panel panel-default">
@@ -34,4 +34,4 @@ if( typeof lt_homepage === 'undefined' ){
 </script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-libs-5b35f0a97d.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt-homepage-38d316d585.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-homepage-c8794a90ca.min.js"></script>
