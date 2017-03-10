@@ -12,35 +12,8 @@
 	root.blog.homepage = {
 		init:function(){
             this.getKeywords();
-			this.showKeywordPage();
 			this.getPm2_5();
             this.getNewarticle();
-		},
-        getKeywords:function(){
-            var _this = this;
-
-            $.get('/post/get-keywords').done(function(data){
-                _this.showKeyword(data);
-            });
-        },
-		// 创建关键词标签
-		showKeyword:function( keywords ){
-			var _keyword           = JSON.parse( keywords ).split(',');
-			var $keywordsContainer = $('.tags-container');
-
-			for( var i=0;i<_keyword.length;i++ ){
-
-				$keywordsContainer.tags({content:_keyword[i],canRemove:'false'});
-			}
-
-		},
-		// 绑定标签功能
-		showKeywordPage:function(){
-			$('.tags-container').on('click','.tag-container',function(){
-				var _keyword = $(this).find('.lt-tag').text();
-
-				window.location.href = lt_global.baseurl + '/list/tags/' + _keyword;
-			});			
 		},
 		getPm2_5:function(){
 			var params = {
@@ -89,7 +62,7 @@
 						articleHtml += '\
 							<article class="panel panel-default">\
 								<div class="panel-heading post-head">\
-									' + _this.formatTime( articles[i].update_time ) + '\
+									' + _this._formatCreatetime( articles[i].update_time ) + '\
 								</div>\
 								<div class="panel-body post-content">\
 									<h3 class="post-head">' + articles[i].title + '</h3>\
@@ -104,7 +77,7 @@
             });
         },
 		// 格式化文章的时间，去掉时分秒，只保留年月日
-		formatTime:function(str){
+		_formatCreatetime:function(str){
 			if( typeof str !== 'string' ){
 				return str;
 			}
@@ -122,7 +95,94 @@
 			var content = result[0];
 
 			return content;
+		},
+		// ********* tags begin **********
+		// 获取所有关键词
+		getKeywords:function(){
+			var _this = this;
+
+			$.get('/post/get-keywords').done(function(data){
+				var keywords = JSON.parse( data );
+
+				_this._showKeyword( keywords );
+			});
+		},
+		// 创建关键词标签
+		_showKeyword:function(str){
+			if( typeof str !== 'string' ){
+				return str;
+			}
+			var _keyword           = str.split(',');
+			var $keywordsContainer = $('.tags-container');
+
+			for( var i=0;i<_keyword.length;i++ ){
+
+				$keywordsContainer.tags({content:_keyword[i],canRemove:'false'});
+			}
+			this._showKeywordPage();
+		},
+		// 绑定标签功能
+		_showKeywordPage:function(){
+			var _this = this;
+
+			$('.tags-container').on('click','.tag-container',function(){
+				var _keyword = $(this).find('.lt-tag').text();
+
+				_this._getArticleByTag( _keyword );
+			});			
+		},
+		// 按标签查询文章
+		_getArticleByTag:function( tag ){
+			var _this = this;
+
+			$.get( '/post/get-article-by-tag?tag=' + tag ).done(function(data){
+				data = JSON.parse( data );
+				if( !data || typeof data.msg === 'fundefined' || data.msg === 'error' ){
+					console.log('获取文章失败');
+				}
+				else{
+					var articles = data.msg; 
+
+					_this._filloutAritcleByTag( articles,tag );
+				}
+			});
+		},
+		// 展示按标签查询到的文章
+		_filloutAritcleByTag:function( articles,tag ){
+			var articleHtml = '';
+			
+			for( var i=0,len=articles.length;i<len;i++ ){
+				articleHtml += '\
+					<li>\
+						<a href="' + articles[i].id + '/article/' + articles[i].title + '/" title="' + articles[i].title + '">' + articles[i].title + '</a>\
+						<span class="pv pull-right">' + this._formatCreatetime( articles[i].create_time ) + '</span>\
+					</li>';
+			}
+
+			var $tagContainer = $('.tag-article-container');
+			// 不是第一次按标签查询
+			if( $tagContainer.length === 1 ){
+				var ulTagContainer = $('.tag-article');
+
+				ulTagContainer.html('');
+				ulTagContainer.append( articleHtml );
+				$('.tag-name').text( tag );
+			}
+			else{
+				var wrapperHtml = '\
+					<div class="panel panel-default tag-article-container">\
+						<div class="panel-heading">\
+							分类文章 : <span class="tag-name">' + ( tag || '' ) + '<span>\
+						</div>\
+						<div class="panel-body">\
+							<ul class="tag-article">' + articleHtml + '</ul>\
+						</div>\
+					</div>';
+				var $outerContainer = $('main.list-container');
+				$outerContainer.prepend( wrapperHtml );
+			}
 		}
+		// ********* tags end **********
 	}
 }).call(this);
 

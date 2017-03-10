@@ -40,53 +40,73 @@ class PostController extends Controller{
 		];
 	}
 
+	/*
+	*@desc 渲染“博文列表”页的视图
+	*/
 	public function actionList(){
 		$this -> getView() -> title = "博文列表";
-
 		$isGuest = Yii::$app -> user -> isGuest;
-		
 
-		// 所有文章(及按标签查询)
-		$listAll = Article::find();
-		if( $isGuest ){
-			$listAll -> where('status=1');
-		}
+		return $this -> render('list');
+	}
+	/*
+	*@param {String} 点击量最高的前n篇，默认10篇
+	*@param {JSON} 指定数目的文章数组
+	*@ 异常处理需完善......
+	*/
+	public function actionGetArticleHot(){
+		$result = Array();
+		$isGuest = Yii::$app -> user -> isGuest;
 		$request = Yii::$app -> request;
-		$keyword = $request -> get('keyword');
-		if( !empty($keyword) ){
-			$listAll -> andWhere(['like', 'keyword', $keyword]);
-		}
-		$listAll = $listAll -> asArray() -> all();
-		$data['listAll'] = $listAll;
+		$sum = $request -> get('sum',10); // 默认前10篇
 
-		// 热门排行
-		$listHot = Article::find();
+		$articles = Article::find();
 		if( $isGuest ){
 			$listHot -> where('status=1');
 		}
-		$listHot = $listHot -> orderBy('pv desc') -> limit(10) -> asArray() -> all();
-		$data['listHot'] = $listHot;
-
-		// 最新文章
-		$listLatest = Article::find();
-		if( $isGuest ){
-			$listLatest -> where('status=1');
+		try{
+			$articleHot = $articles -> orderBy('pv desc') -> limit( $sum ) -> asArray() -> all();
+			$result['status'] = 'success';
+			$result['msg'] = $articleHot;
+		}catch(\Exception $e){
+			$result['status'] = 'error';
+			$result['msg'] = '500';
 		}
-		$listLatest = $listLatest -> orderBy('create_time desc') -> limit(10) -> asArray() -> all();
-		$data['listLatest'] = $listLatest;
 
-		// 文章关键词
-		$keywords = Article::find();
-		if( $isGuest ){
-			$keywords -> where('status=1');
-		}
-		$keywords = $keywords -> select('keyword') -> asArray() -> all();
-		$keywords = $this -> foo($keywords);
-		$data['keywords'] = $keywords;
-
-		return $this -> render('list',['data' => $data]);
+		return json_encode( $result );
 	}
 
+	/*
+	*@param {String} 最新的前n篇，默认10篇
+	*@param {JSON} 指定数目的文章数组
+	*@异常处理需完善......
+	*/
+	public function actionGetArticleNew(){
+		$result = Array();
+		$isGuest = Yii::$app -> user -> isGuest;
+		$request = Yii::$app -> request;
+		$sum = $request -> get('sum',10); // 默认前10篇
+
+		$articles = Article::find();
+		if( $isGuest ){
+			$listHot -> where('status=1');
+		}
+		try{
+			$articleHot = $articles -> orderBy('create_time desc') -> limit( $sum ) -> asArray() -> all();
+			$result['status'] = 'success';
+			$result['msg'] = $articleHot;
+		}catch(\Exception $e){
+			$result['status'] = 'error';
+			$result['msg'] = '500';
+		}
+
+		return json_encode( $result );
+	}
+
+	/*
+	*@param {null}
+	*@return {JSON} 返回所有关键词，逗号间隔的字符串  
+	*/
 	public function actionGetKeywords(){
 		// 文章关键词
 		$keywords = Article::find();
@@ -95,21 +115,38 @@ class PostController extends Controller{
 			$keywords -> where('status=1');
 		}
 		$keywords = $keywords -> select('keyword') -> asArray() -> all();
-		$keywords = $this -> foo($keywords);
+		$keywords = $this -> formatKeywordsToStr($keywords);
 
 		echo json_encode( $keywords );
 	}
-	
-	/*	
-	* 响应所有文章的分页查询。参数pageNUm,PageSize
+
+	/*
+	*@param {Array}
+	*@desc 整理数据库查询出的关键词数据，关联数组转成索引数组、去重、返回逗号间隔的字符串，
 	*/
-	public function actionSearchArticle(){
+	private function formatKeywordsToStr( $array ){
+		$keywordsArr = Array();
+		foreach( $array as $key => $value ){
+			array_push($keywordsArr,$value['keyword']);
+		}
+		$keywords = implode( ',',array_unique( explode( ',',implode(',',$keywordsArr) ) ) );
+		
+		return $keywords;
+	}
+
+	/*	
+	*@param {String} pageSize   单页长度，缺省单页10条
+	*@param {String} pageNum    第n页,缺省第1页
+	*@return {JSON} 文章分页查询结果 
+	*@desc 响应所有文章的分页查询。
+	*/
+	public function actionGetPaginationArticle(){
 		$isGuest  = Yii::$app -> user -> isGuest;
 		$request  = Yii::$app -> request;
-		$pageNum  = $request -> get('pageNum');
-		$pageSize = $request -> get('pageSize');
+		$pageNum  = $request -> get('pageNum',1);
+		$pageSize = $request -> get('pageSize',10);
 		
-		$offsetNum = ($pageNum - 1) * $pageSize;
+		$offsetNum = ( $pageNum - 1 ) * $pageSize;
 		$listAll = Article::find();
 		if( $isGuest ){
 			$listAll -> where('status=1');
@@ -122,14 +159,27 @@ class PostController extends Controller{
 
 		echo json_encode( $res );
 	}
-	
-	private function foo( $array ){
-		$keywordsArr = Array();
-		foreach( $array as $key => $value ){
-			array_push($keywordsArr,$value['keyword']);
+
+	/*
+	*@param {String} tag
+	*@desc 按照标签查询文章
+	*/ 
+	public function actionGetArticleByTag(){
+		$result = Array();
+		$request = Yii::$app -> request;
+		$tag = $request -> get('tag');
+		if( !$tag ){
+			$result['status'] = 'error';
+			$result['msg'] = 'tag 非法';
 		}
-		$keywords = implode( ',',array_unique( explode( ',',implode(',',$keywordsArr) ) ) );
-		return $keywords;
+		else{
+			$articles = Article::find();
+			$articlesByTag = $articles -> where( ['like','keyword',$tag] ) -> asArray() -> all();
+			$result['status'] = 'success';
+			$result['msg'] = $articlesByTag;
+		}
+
+		echo json_encode( $result );
 	}
 
 	public function actionCreate(){
