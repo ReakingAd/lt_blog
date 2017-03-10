@@ -9,8 +9,9 @@ use yii\helpers\Url;
 			<div class="panel-heading">
 				文章列表
 			</div>
-			<div class="panel-body">
-				<ul class="article-all"></ul>
+			<div class="panel-body article-all-wrapper">
+				<div class="spin-container opacity-1"></div>
+				<ul class="article-all opacity-0"></ul>
 			</div>
 		</div>
 		<!-- 分页页码 -->
@@ -25,8 +26,9 @@ use yii\helpers\Url;
 			<div class="panel-heading">
 				热门排行
 			</div>
-			<div class="panel-body">
-				<ul class="article-hot">
+			<div class="panel-body article-hot-wrapper">
+				<div class="spin-container opacity-1"></div>
+				<ul class="article-hot article-hot-empty">
 				</ul>
 			</div>
 		</div>
@@ -34,7 +36,8 @@ use yii\helpers\Url;
 			<div class="panel-heading">
 				最新文章
 			</div>
-			<div class="panel-body">
+			<div class="panel-body article-latest-wrapper">
+				<div class="spin-container opacity-1"></div>
 				<ul class="article-latest">
 				</ul>
 			</div>

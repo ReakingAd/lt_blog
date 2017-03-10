@@ -2,15 +2,16 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-list-7189f0feed.min.css" />
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-list-9a2096d648.min.css" />
 <div class="row">
 	<main class="col-md-9 list-container">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				文章列表
 			</div>
-			<div class="panel-body">
-				<ul class="article-all"></ul>
+			<div class="panel-body article-all-wrapper">
+				<div class="spin-container opacity-1"></div>
+				<ul class="article-all opacity-0"></ul>
 			</div>
 		</div>
 		<!-- 分页页码 -->
@@ -25,8 +26,9 @@ use yii\helpers\Url;
 			<div class="panel-heading">
 				热门排行
 			</div>
-			<div class="panel-body">
-				<ul class="article-hot">
+			<div class="panel-body article-hot-wrapper">
+				<div class="spin-container opacity-1"></div>
+				<ul class="article-hot article-hot-empty">
 				</ul>
 			</div>
 		</div>
@@ -34,7 +36,8 @@ use yii\helpers\Url;
 			<div class="panel-heading">
 				最新文章
 			</div>
-			<div class="panel-body">
+			<div class="panel-body article-latest-wrapper">
+				<div class="spin-container opacity-1"></div>
 				<ul class="article-latest">
 				</ul>
 			</div>
@@ -66,6 +69,6 @@ if( typeof lt_list === 'undefined' ){
 	lt_list = {}
 }
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-2c163d2e6b.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-608d93d1e7.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt-list-3ee0b71fa4.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-list-c9b47d5153.min.js"></script>
