@@ -87,7 +87,7 @@ gulp.task('jstest',() => {
 gulp.task('jslist',() => {
 	return gulp.src( ['src/js/list/*.js'] )
 		.pipe( concat('list.js') )
-		.pipe( uglify() )
+		// .pipe( uglify() )
 		.pipe( rename(pkg.prefix + '-list.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )

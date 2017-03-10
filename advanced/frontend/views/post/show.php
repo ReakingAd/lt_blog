@@ -23,6 +23,6 @@ if( typeof lt_values['show'] === 'undefined' ){
 	}
 }
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-2c163d2e6b.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-608d93d1e7.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-show-c9f7134e06.min.js"></script>
