@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Url;
 ?>
-<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-aboutme-c520da0eb4.min.css" />
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-aboutme-7ec2b4b2a3.min.css" />
 <div class="row">
     <ul class="contact-me">
         <li>
