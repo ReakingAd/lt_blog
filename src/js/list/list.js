@@ -22,11 +22,11 @@
 			    var opts = {
 					lines: 12             // The number of lines to draw
 					, length: 7             // The length of each line
-					, width: 5              // The line thickness
+					, width: 4              // The line thickness
 					, radius: 10            // The radius of the inner circle
 					, scale: 1.0            // Scales overall size of the spinner
 					, corners: 1            // Roundness (0..1)
-					, color: '#000'         // #rgb or #rrggbb
+					, color: '#999'         // #rgb or #rrggbb
 					, opacity: 1/4          // Opacity of the lines
 					, rotate: 0             // Rotation offset
 					, direction: 1          // 1: clockwise, -1: counterclockwise
@@ -82,7 +82,7 @@
 			var _this = this;
 			
 			$('.x_page_container .lt-pagination').LTPagination({
-				ajaxUrl:'/post/get-pagination-article',  // ajax获取数据的接口
+				ajaxUrl:'/post/get-article-pagination',  // ajax获取数据的接口
 				ajaxCallback:_this._filloutPaginationArticle,
 				pageSize:15,
 				ajaxExtraParam:{},     // 额外携带的参数，必须为对象。
@@ -139,7 +139,7 @@
 			for( var i=0,len=articles.length;i<len;i++ ){
 				html += '\
 					<li>\
-						<a href="' + articles[i].id + '/article/' + articles[i].title + '/" title="' + articles[i].title + '">' + articles[i].title + '</a>\
+						<a href="/article/' + articles[i].id + '/' + articles[i].title + '" title="' + articles[i].title + '">' + articles[i].title + '</a>\
 						<span class="pv pull-right">' + articles[i].pv + '</span>\
 					</li>\
 					';
@@ -155,9 +155,9 @@
 			var _this = this;
 			var sum = 10; // 最热前10
 
-			$.get('/post/get-article-new?sum=' + sum).done(function(data){
-				_this._filloutAritcleNew(data);
-			});
+			$.get('/post/get-article-new?range=1to' + sum).done(function(data){
+				_this._filloutAritcleNew( data );
+			})
 		},
 		// 展示最新文章
 		_filloutAritcleNew:function(data){
@@ -172,7 +172,7 @@
 			for( var i=0,len=articles.length;i<len;i++ ){
 				html += '\
 					<li>\
-						<a href="' + articles[i].id + '/article/' + articles[i].title + '/" title="' + articles[i].title + '">' + articles[i].title + '</a>\
+						<a href="/article/' + articles[i].id + '/' + articles[i].title + '" title="' + articles[i].title + '">' + articles[i].title + '</a>\
 						<span class="pv pull-right">' + this._formatCreatetime( articles[i].create_time ) + '</span>\
 					</li>\
 					';

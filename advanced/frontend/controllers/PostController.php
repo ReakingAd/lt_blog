@@ -77,31 +77,50 @@ class PostController extends Controller{
 	}
 
 	/*
-	*@param {String} 最新的前n篇，默认10篇
-	*@param {JSON} 指定数目的文章数组
-	*@异常处理需完善......
-	*/
-	public function actionGetArticleNew(){
-		$result = Array();
-		$isGuest = Yii::$app -> user -> isGuest;
-		$request = Yii::$app -> request;
-		$sum = $request -> get('sum',10); // 默认前10篇
-
-		$articles = Article::find();
-		if( $isGuest ){
-			$listHot -> where('status=1');
+	* @param {String} timeFlag 标准时间格式的字符串。例如 2017-03-01 22:27:30。如果没有这个参数，则始终取最新的文章
+    * @param {String} range   最新的文章1篇或连续多篇。例如 1to3 为最新和倒数第3新之间的所有文章
+    * @desc 以timeFlag做分隔，在此时间之前的 range 范围内的文章。
+	* @example  1to3 返回最新的第1篇至第3篇
+	*           5 返回最新的第五篇。
+    */     
+    public function actionGetArticleNew(){
+        $result   = Array();
+        $request  = Yii::$app -> request;
+        $rangeStr = $request -> get('range');
+		$timeFlag = $request -> get('timeFlag');
+		$hasStrTo       = strstr( $rangeStr,'to' );
+		// 参数中不含 to
+		if( !$hasStrTo ){
+			$offset = (int)$rangeStr;
+			$sum    = 1;
 		}
-		try{
-			$articleHot = $articles -> orderBy('create_time desc') -> limit( $sum ) -> asArray() -> all();
-			$result['status'] = 'success';
-			$result['msg'] = $articleHot;
-		}catch(\Exception $e){
-			$result['status'] = 'error';
-			$result['msg'] = '500';
+		// 参数中包含 to
+		else{
+			$range  = explode('to',$rangeStr);
+			$offset = $range[0] - 1;
+			$sum    = $range[1] - $range[0] + 1;
+			if( $sum <= 0 ){
+				$result['status'] = 'error';
+				$result['msg'] = '参数错误';
+				
+				echo json_encode( $result ); 
+			}
 		}
 
-		return json_encode( $result );
-	}
+        $isGuest = Yii::$app -> user -> isGuest;
+        $articles = Article::find();
+        if( $isGuest ){
+            $articles -> where('status=1');
+        }
+		if( $timeFlag ){
+        	$articles = $articles -> where( ['<','create_time',$timeFlag] ); // > 之后  < 之前
+		}
+		$articles = $articles -> orderBy('create_time desc') -> offset( $offset ) -> limit( $sum ) -> asArray() -> all();
+        $result['status'] = 'success';
+        $result['msg'] = $articles;
+
+        echo json_encode( $result );
+    }
 
 	/*
 	*@param {null}
@@ -140,7 +159,7 @@ class PostController extends Controller{
 	*@return {JSON} 文章分页查询结果 
 	*@desc 响应所有文章的分页查询。
 	*/
-	public function actionGetPaginationArticle(){
+	public function actionGetArticlePagination(){
 		$isGuest  = Yii::$app -> user -> isGuest;
 		$request  = Yii::$app -> request;
 		$pageNum  = $request -> get('pageNum',1);
@@ -323,46 +342,5 @@ class PostController extends Controller{
 	    $data = file_get_contents($url);  
 	    echo $data; 
 	}
-
-    /*
-    * @param {String} 1to3 返回最新的文章1篇或连续多篇
-    * @desc 返回最新的指定数量的文章
-	* @example  1to3 返回最新的第1篇至第3篇
-	*           5 返回最新的第五篇。
-    */     
-    public function actionGetNewarticle(){
-        $result   = Array();
-        $request  = Yii::$app -> request;
-        $rangeStr = $request -> get('range');
-		$hasStrTo       = strstr( $rangeStr,'to' );
-		// 参数中不含 to
-		if( !$hasStrTo ){
-			$offset = (int)$rangeStr;
-			$sum    = 1;
-		}
-		// 参数中包含 to
-		else{
-			$range  = explode('to',$rangeStr);
-			$offset = $range[0] - 1;
-			$sum    = $range[1] - $range[0] + 1;
-			if( $sum <= 0 ){
-				$result['status'] = 'error';
-				$result['msg'] = '参数错误';
-				
-				echo json_encode( $result ); 
-			}
-		}
-
-        $isGuest = Yii::$app -> user -> isGuest;
-        $articles = Article::find();
-        if( $isGuest ){
-            $articles -> where('status=1');
-        }
-        $articles = $articles -> orderBy('create_time desc') -> offset( $offset ) -> limit( $sum ) -> asArray() -> all();
-        $result['status'] = 'success';
-        $result['msg'] = $articles;
-
-        echo json_encode( $result );
-    }
 
 }
