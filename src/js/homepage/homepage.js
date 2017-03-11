@@ -14,11 +14,18 @@
 			latestTo:''
 		},
 		init:function(){
+			this.showBtns();
             this.getKeywords();
 			this.getPm2_5();
             this.getNewarticle();
 			this.initBtnLoading();
 			this.bindingBtnGetMore();
+		},
+		showBtns:function(){
+			Pubsub.listen('articleLoaded',function(){
+				$('.btn-container').removeClass('lt-hide');
+				$('footer').show();
+			});
 		},
 		getPm2_5:function(){
 			var params = {
@@ -89,6 +96,7 @@
 					';
 			}
 			$container.append( articleHtml );
+			Pubsub.trigger('articleLoaded');
 			this._enableLoading('off');
 		},
 		// 格式化文章的时间，去掉时分秒，只保留年月日
@@ -230,7 +238,7 @@
 			$('.btn-getMore').on('click',function(){
 				_this._enableLoading('on');
 				var create_time = $('article').last().data('create-time');
-				
+
 				$.get('/post/get-article-new?timeFlag=' + create_time + '&range=1to3').done(function(data){
 					try{
 						data = JSON.parse( data );
@@ -247,6 +255,7 @@
 				});
 			});
 		},
+		// 切换“获取更多”按钮的状态
 		_enableLoading:function(flag){
 			if( typeof flag !== 'string' ){
 				return;

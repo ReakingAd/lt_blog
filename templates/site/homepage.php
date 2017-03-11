@@ -5,7 +5,7 @@ use yii\helpers\Url;
 <div class="row">
 	<main class="col-md-9 list-container">
 		<div class="article-container"></div>
-		<div class="btn-container">
+		<div class="btn-container lt-hide">
 			<span class="btn-loading lt-hide"></span>
 			<button class="btn-getMore ">查看更多</button>
 		</div>
