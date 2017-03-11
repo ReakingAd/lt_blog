@@ -1,0 +1,40 @@
+/*
+*@desc 提供一些@mixin用法
+*@auther ltvieri
+*@example   
+        @import  '../reakingad.scss';
+*
+/
+
+// ==================================================
+/*
+*@desc 基础@mixin，用于构建更高级的针对浏览器前缀的@mixin
+*/ 
+@mixin _prefix( $property,$value ){
+    -webkit-#{$property}:$value;
+    -moz-#{$property}:$value;
+    #{$property}:$value;
+}
+
+/*
+*@desc 为transition属性添加前缀
+*@example
+*       div{
+            @include transition(all 2s)
+        }
+        编译为
+        div{
+            -webkit-transition:all 2s;
+            -moz-transition:all 2s;
+            transition:all 2s;    
+        }
+*/
+@mixin transition( $value ){
+    @include _prefix( transition,$value )
+}
+/*
+*@desc 为radius属性添加前缀
+*/
+@mixin radius( $value ){
+    @include _prefix( border-radius,$value )
+}

@@ -1,19 +1,25 @@
-/*
-* @name		Tags
-* @author	Ltvieri
-* @require	jQuery
-*			tags.scss [which is need to be compiled to css file]
-* @usage	html:
-*			<div class="foo"></div>
+/**
+ * @name   Tags
+ * @author Ltvieri
+ * @desc   jQuery插件。在指定容器中，添加一个带文字的小标签。例如文章的keyword
+ * @param  {string}  content  标签内要显示的文字 
+ * 		   {string}  canRemove  是否支持删除功能。'true'支持删除功能或'false'不支持删除功能。缺省为 'true'
+ * @require jQuery  tags.scss[需要编译为css]
+ * @example  
+ * 			html:
+*				<div class="foo"></div>
 *			js:
-*			$('div.foo').tags({content:'标签'});
-* @params	content   ----- string	            ----- 标签内容			
-*			canRemove ----- 'true' or 'false'	----- 是否支持移除功能	
-*/
+*				$('div.foo').tags({content:'标签'});
+ */
 ;(function(window,document,$,undefined){
 
 'use strict';
-
+/**
+ * @desc  Tags构造函数，被用于创建jQuery.Tags()插件。
+ * @param {selector或jQuery对象} container 盛放标签的容器
+ * @param {string} content  便签内要显示的文字 
+ * @param {string} canRemove 只支持两个值。'true'支持删除功能或'false'不支持删除功能。缺省为 'true' 
+ */
 function Tags(container,content,canRemove){
 	this.container = container;					// 标签容器
 	this.content   = content;					// 标签内容

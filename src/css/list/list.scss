@@ -1,3 +1,4 @@
+@import '../reakingad';
 .update-time,.pv{
    color:#ccc;
 }
@@ -6,7 +7,7 @@
    margin-left:10px;
 }
 ul.article-all,ul.article-hot,ul.article-latest{
-    -webkit-transition:all 2s;
+    @include transition( all 2s );
     li{
         border:3px solid transparent;
         &:hover{

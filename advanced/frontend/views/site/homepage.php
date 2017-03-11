@@ -32,6 +32,6 @@ if( typeof lt_homepage === 'undefined' ){
 	lt_homepage = {}
 }
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-c78a64c110.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-9b317b8949.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-homepage-c8794a90ca.min.js"></script>
