@@ -177,7 +177,7 @@
 			for( var i=0,len=articles.length;i<len;i++ ){
 				articleHtml += '\
 					<li>\
-						<a href="' + articles[i].id + '/article/' + articles[i].title + '/" title="' + articles[i].title + '">' + articles[i].title + '</a>\
+						<a href="/article/' + articles[i].id + '/' + articles[i].title + '" title="' + articles[i].title + '">' + articles[i].title + '</a>\
 						<span class="pv pull-right">' + this._formatCreatetime( articles[i].create_time ) + '</span>\
 					</li>';
 			}
