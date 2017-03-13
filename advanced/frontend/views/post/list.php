@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-list-1c3afb2f0f.min.css" />
+<link rel="stylesheet" href="<?php echo Url::base(true); ?>/build/css/lt-list-6af2006afe.min.css" />
 <div class="row">
 	<main class="col-md-9 list-container">
 		<div class="panel panel-default">
@@ -69,6 +69,6 @@ if( typeof lt_list === 'undefined' ){
 	lt_list = {}
 }
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-9b317b8949.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-d5e3f83f65.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-list-6e6f33986d.min.js"></script>

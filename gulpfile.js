@@ -63,7 +63,7 @@ gulp.task('jscreate',() => {
 gulp.task('jsshow',() => {
 	return gulp.src( ['src/js/show/*.js'] )
 		.pipe( concat('show.js') )
-		// .pipe( uglify() )
+		.pipe( uglify() )
 		.pipe( rename(pkg.prefix + '-show.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )

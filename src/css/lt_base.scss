@@ -38,3 +38,11 @@
 @mixin radius( $value ){
     @include _prefix( border-radius,$value )
 }
+
+@mixin animation( $value ){
+    @include _prefix( animation,$value )
+}
+
+@mixin transform( $value ){
+    @include _prefix( transform,$value )
+}

@@ -1,0 +1,60 @@
+@import '../lt_base';
+
+.lt-overlay{
+    background-color:#000;
+    opacity:0.3;
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+.lt-popup{
+    position:absolute;
+    border:1px solid #999;
+    background-color:#fff;
+    border-radius:5px;
+    @include animation( scale-out .3s );
+    .lt-popup-head{
+        padding:10px;
+        border-top:5px solid #999;
+        overflow:hidden;
+    }
+    .lt-popup-msg-container{
+        padding:10px 10px 20px;
+    }
+    .lt-popup-btn-container{
+        text-align: right;
+        padding: 10px;
+        button{
+            margin-left: 10px;
+        }
+    }
+}
+.lt-popup-hastitle{
+    border-bottom: 1px solid #ccc;
+}
+.close-icon{
+    height:14px;
+    width:14px;
+    background:url('./close-icon.png');
+    background-image: url(../../images/close-icon.png);
+    background-size: 100%;
+    cursor:pointer;
+    @include transition( transform .5s );
+}
+.close-icon:hover{
+    @include transform( rotate( 90deg ) );
+}
+@keyframes scale-out{
+    from{
+        opacity:0;
+        @include transform( scale(0.5) )
+    }
+    80%{
+        opacity:1;
+        @include transform( scale(1.05) )
+    }
+    to{
+        opacity:1;
+        @include transform( scale(1) )
+    }
+}
