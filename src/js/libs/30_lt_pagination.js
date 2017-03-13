@@ -185,12 +185,12 @@ LTPagination.prototype._pagination_userinfo = function(){
 		$paginationJump.on('click','.pagination-btn-jump',function(){
 			var _wantedPage = $('.pagination-input-jump').val();
 			if( !_wantedPage ){
-				$.ds_alert('请先填写跳转页码!');
+				$.ltAlert('请先填写跳转页码!');
 				return;
 			}
 			_wantedPage = parseInt(_wantedPage);
 			if( isNaN(_wantedPage) || _wantedPage < 1 || _wantedPage > _this.pageCount ){
-				$.ds_alert('请填写正确的页码。\r\n必须为小于等于 ' + _this.pageCount + ' 的正整数');
+				$.ltAlert('请填写正确的页码。\r\n必须为小于等于 ' + _this.pageCount + ' 的正整数');
 				return ;
 			}
 			_this.pageNum = _wantedPage; // 被点击要请求的的页面号码

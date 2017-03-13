@@ -1,3 +1,5 @@
+@import '../lt_base';
+
 .lt-overlay{
     background-color:#000;
     opacity:0.3;
@@ -7,29 +9,28 @@
 }
 .lt-popup{
     position:absolute;
-    width:300px;
     border:1px solid #999;
     background-color:#fff;
     border-radius:5px;
-    -webkit-animation:scale-out .3s;
-}
-.lt-popup-head{
-    padding:10px;
-    border-top:5px solid #999;
-    overflow:hidden;
+    @include animation( scale-out .3s );
+    .lt-popup-head{
+        padding:10px;
+        border-top:5px solid #999;
+        overflow:hidden;
+    }
+    .lt-popup-msg-container{
+        padding:10px 10px 20px;
+    }
+    .lt-popup-btn-container{
+        text-align: right;
+        padding: 10px;
+        button{
+            margin-left: 10px;
+        }
+    }
 }
 .lt-popup-hastitle{
     border-bottom: 1px solid #ccc;
-}
-.lt-popup-msg-container{
-    padding:10px 10px 20px;
-}
-.lt-popup-btn-container{
-    text-align: right;
-    padding: 10px;
-}
-.lt-popup-btn-container button{
-    margin-left: 10px;
 }
 .close-icon{
     height:14px;
@@ -37,23 +38,23 @@
     background:url('./close-icon.png');
     background-image: url(../../images/close-icon.png);
     background-size: 100%;
-    -webkit-transition:transform .5s;
     cursor:pointer;
+    @include transition( transform .5s );
 }
 .close-icon:hover{
-    -webkit-transform:rotate( 90deg );
+    @include transform( rotate( 90deg ) );
 }
 @keyframes scale-out{
     from{
         opacity:0;
-        -webkit-transform:scale(0.5)
+        @include transform( scale(0.5) )
     }
     80%{
         opacity:1;
-        -webkit-transform:scale(1.05)
+        @include transform( scale(1.05) )
     }
     to{
         opacity:1;
-        -webkit-transform:scale(1)
+        @include transform( scale(1) )
     }
 }

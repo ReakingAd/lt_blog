@@ -29,5 +29,5 @@ use yii\helpers\Url;
 <script>
 
 </script>
-<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-e1b41d1f64.min.js"></script>
+<script src="<?php echo Url::base(true); ?>/build/js/lt-libs-d5e3f83f65.min.js"></script>
 <script src="<?php echo Url::base(true); ?>/build/js/lt-global-323f788beb.min.js"></script>

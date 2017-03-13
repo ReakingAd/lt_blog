@@ -24,10 +24,10 @@ const minifyHTML   = require('gulp-minify-html');
 gulp.task('jslibs',() => {
 	return gulp.src('src/js/libs/*.js')
 		.pipe( concat('libs.js') )
-		// .pipe( uglify({
+		.pipe( uglify({
 			// mangle:true,  // 混淆变量名
 			// preserveComments:'all', // all保留注释
-		// }))
+		}))
 		.pipe( rename(pkg.prefix + '-libs.min.js') )
 		.pipe( header('/* Build by ' + pkg.author + ' ' + moment().format('YYYY/MM/DD HH:mm:ss') + ' */\n') )
 		.pipe( rev() )
