@@ -14,6 +14,7 @@
 			latestTo:''
 		},
 		init:function(){
+			$.ltAlert(111111111);
 			this.showBtns();
             this.getKeywords();
 			this.getPm2_5();
