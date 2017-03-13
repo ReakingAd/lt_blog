@@ -62,7 +62,7 @@ class PostController extends Controller{
 
 		$articles = Article::find();
 		if( $isGuest ){
-			$listHot -> where('status=1');
+			$articles -> where('status=1');
 		}
 		try{
 			$articleHot = $articles -> orderBy('pv desc') -> limit( $sum ) -> asArray() -> all();
@@ -109,11 +109,11 @@ class PostController extends Controller{
 
         $isGuest = Yii::$app -> user -> isGuest;
         $articles = Article::find();
-        if( $isGuest ){
-            $articles -> where('status=1');
-        }
+		if( $isGuest ){
+			$articles -> where('status=1');
+		}
 		if( $timeFlag ){
-        	$articles = $articles -> where( ['<','create_time',$timeFlag] ); // > 之后  < 之前
+        	$articles -> andWhere( ['<','create_time',$timeFlag] ); // > 之后  < 之前
 		}
 		$articles = $articles -> orderBy('create_time desc') -> offset( $offset ) -> limit( $sum ) -> asArray() -> all();
         $result['status'] = 'success';
