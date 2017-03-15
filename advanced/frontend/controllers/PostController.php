@@ -280,7 +280,7 @@ class PostController extends Controller{
 		$isGuest = Yii::$app -> user -> isGuest;
 		$request = Yii::$app -> request;
 		$data = array(
-			'isGuest' => $isGuest,
+			'isGuest' => $isGuest
 		);
 
 		return $this -> render('show',['data' => $data]);
