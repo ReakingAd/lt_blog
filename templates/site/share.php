@@ -32,10 +32,10 @@ use yii\helpers\Url;
 					<a href="http://es6.ruanyifeng.com/#README" title="ECMAScript6入门" target="_blank">ECMAScript6入门--阮一峰</a>
 				</li>
 				<li>
-					<a href="">xxxxx</a>
+					<a href="http://react-china.org/" title="React中文论坛" target="_blank">React China</a>
 				</li>
 				<li>
-					<a href="">xxxxx</a>
+					<a href="https://cnodejs.org/" titile="国内最大的nodejs开源技术社区" target="_blank">cnode</a>
 				</li>
 			</ul>
 		</div>
