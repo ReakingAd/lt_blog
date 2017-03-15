@@ -49,9 +49,9 @@
 				if( typeof article === 'undefined' ){
 					return console.log('获取文章失败');
 				}
-				var isGuset = lt_values.isGuset;
+				var isGuset = lt_values.show.isGuest;
 				// 填充文章title及相关信息
-				var editBtn = isGuset === 'true' ? '' : '<button class="btn-edit btn btn-default btn-sm pull-right">修改</button>';
+				var editBtn = isGuset === '1' ? '' : '<button class="btn-edit btn btn-default btn-sm pull-right">修改</button>';
 				var descHtml = '\
 					<h2>' + ( article.title || '' ) + '</h2>\
 					<p class="clearfix">\
@@ -123,7 +123,6 @@
 				}
 				var tags = article.keyword;
 				var tagArr = tags.split(',');
-				console.log( tagArr );
 			});
 		}
 	}
