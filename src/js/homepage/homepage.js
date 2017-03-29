@@ -85,7 +85,7 @@
 				articleHtml += '\
 					<article class="panel panel-default" data-create-time="' + articles[i].create_time + '">\
 						<div class="panel-heading post-head">\
-							' + this._formatCreatetime( articles[i].update_time ) + '\
+							' + this._formatCreatetime( articles[i].create_time ) + '\
 						</div>\
 						<div class="panel-body post-content">\
 							<h3 class="post-head">' + articles[i].title + draftLabelHtml + '</h3>\
