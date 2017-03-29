@@ -35,7 +35,7 @@ use yii\helpers\Url;
 					<a href="http://react-china.org/" title="React中文论坛" target="_blank">React China</a>
 				</li>
 				<li>
-					<a href="https://cnodejs.org/" titile="国内最大的nodejs开源技术社区" target="_blank">cnode</a>
+					<a href="https://cnodejs.org/" title="国内最大的nodejs开源技术社区" target="_blank">cnode</a>
 				</li>
 			</ul>
 		</div>
