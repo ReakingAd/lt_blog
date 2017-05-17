@@ -37,6 +37,9 @@ use yii\helpers\Url;
 				<li>
 					<a href="https://cnodejs.org/" title="国内最大的nodejs开源技术社区" target="_blank">cnode</a>
 				</li>
+				<li>
+					<a href="http://caniuse.com/" title="提供web前端技术在PC、移动端浏览器中的最新支持情况" target="_blank">CANIUSE</a>
+				</li>
 			</ul>
 		</div>
 	</div>
